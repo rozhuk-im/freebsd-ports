@@ -1,5 +1,5 @@
 # Created by: Stijn Hoop <stijn@win.tue.nl>
-# $FreeBSD$
+# $FreeBSD: head/x11/nvidia-driver/Makefile 549424 2020-09-21 09:05:04Z manu $
 #
 # For those wondering why this port is not under `x11-drivers' category,
 # have a look at https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=121930.
@@ -71,7 +71,8 @@ NVSRC=		nvidia
 # Initialize memory allocations to avoid spurious "lock re-initialization"
 # errors.  A little more detail can be found in bug 201340 starting around
 # comment #50.
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c \
+		${FILESDIR}/extra-patch-src_nvidia_nvidia_os.c
 .endif
 
 OPTIONS_DEFINE=	ACPI_PM LINUX WBINVD DOCS
