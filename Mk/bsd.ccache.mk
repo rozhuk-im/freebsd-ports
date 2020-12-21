@@ -16,6 +16,10 @@ _CCACHEMKINCLUDED=	yes
 NO_CCACHE=	t
 .endif
 
+.if defined(NO_CCACHE_DEPEND)
+CCACHE_ENV+=	NO_CCACHE_DEPEND=yes
+.endif
+
 # HOME is always set to ${WRKDIR} now. Try to use /root/.ccache as default.
 .if defined(WITH_CCACHE_BUILD) && !defined(CCACHE_DIR)
 .  if defined(USER) && ${USER} == root

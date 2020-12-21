@@ -3996,6 +3996,7 @@ depends: pkg-depends extract-depends patch-depends lib-depends fetch-depends bui
 ${deptype:tl}-depends:
 .if defined(${deptype}_DEPENDS) && !defined(NO_DEPENDS)
 	@${SETENV} \
+		${CCACHE_ENV} \
 		dp_RAWDEPENDS="${${deptype}_DEPENDS}" \
 		dp_DEPTYPE="${deptype}_DEPENDS" \
 		dp_DEPENDS_TARGET="${DEPENDS_TARGET}" \
