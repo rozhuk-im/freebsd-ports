@@ -1,0 +1,95 @@
+--- include/wx/private/streamtempinput.h
++++ include/wx/private/streamtempinput.h
+@@ -69,7 +69,7 @@ class wxStreamTempInputBuffer
+         //
+         // NB: don't use "static int" in this inline function, some compilers
+         //     (e.g. IBM xlC) don't like it
+-        enum { incSize = 4096 };
++        enum { incSize = 131072 };
+ 
+         void *buf = realloc(m_buffer, m_size + incSize);
+         if ( !buf )
+--- src/common/file.cpp
++++ src/common/file.cpp
+@@ -261,7 +261,7 @@ bool wxFile::ReadAll(wxString *str, const wxMBConv& conv)
+ {
+     wxCHECK_MSG( str, false, wxS("Output string must be non-NULL") );
+ 
+-    static const ssize_t READSIZE = 4096;
++    static const ssize_t READSIZE = 131072;
+ 
+     wxCharBuffer buf;
+ 
+@@ -276,7 +276,7 @@
+         char* p = buf.data();
+         for ( ;; )
+         {
+-            ssize_t nread = Read(p, length > READSIZE ? READSIZE : length);
++            ssize_t nread = Read(p, length);
+             if ( nread == wxInvalidOffset )
+                 return false;
+ 
+--- src/common/filefn.cpp
++++ src/common/filefn.cpp
+@@ -933,7 +933,7 @@ wxConcatFiles (const wxString& file1, const wxString& file2, const wxString& fil
+         return false;
+ 
+     ssize_t ofs;
+-    unsigned char buf[1024];
++    unsigned char buf[131072];
+ 
+     for( int i=0; i<2; i++)
+     {
+@@ -979,7 +979,7 @@ wxDoCopyFile(wxFile& fileIn,
+         return false;
+ 
+     // copy contents of file1 to file2
+-    char buf[4096];
++    char buf[131072];
+     for ( ;; )
+     {
+         ssize_t count = fileIn.Read(buf, WXSIZEOF(buf));
+--- src/common/imagjpeg.cpp
++++ src/common/imagjpeg.cpp
+@@ -359,7 +359,7 @@ typedef struct {
+ 
+ typedef wx_destination_mgr * wx_dest_ptr;
+ 
+-#define OUTPUT_BUF_SIZE  4096    /* choose an efficiently fwrite'able size */
++#define OUTPUT_BUF_SIZE 131072    /* choose an efficiently fwrite'able size */
+ 
+ extern "C"
+ {
+--- src/common/lzmastream.cpp
++++ src/common/lzmastream.cpp
+@@ -40,7 +40,7 @@ namespace wxPrivate
+ // Constants
+ // ----------------------------------------------------------------------------
+ 
+-const size_t wxLZMA_BUF_SIZE = 4096;
++const size_t wxLZMA_BUF_SIZE = 131072;
+ 
+ // ----------------------------------------------------------------------------
+ // Private helpers
+--- src/common/stream.cpp
++++ src/common/stream.cpp
+@@ -42,7 +42,7 @@
+ // ----------------------------------------------------------------------------
+ 
+ // the temporary buffer size used when copying from stream to stream
+-#define BUF_TEMP_SIZE 4096
++#define BUF_TEMP_SIZE 131072
+ 
+ // ============================================================================
+ // implementation
+--- src/xml/xml.cpp
++++ src/xml/xml.cpp
+@@ -888,7 +888,7 @@ bool wxXmlDocument::Load(wxInputStream& stream, const wxString& encoding, int fl
+     m_encoding = encoding;
+ #endif
+ 
+-    const size_t BUFSIZE = 1024;
++    const size_t BUFSIZE = 131072;
+     char buf[BUFSIZE];
+     wxXmlParsingContext ctx;
+     bool done;
