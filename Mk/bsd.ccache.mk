@@ -44,6 +44,13 @@ BUILD_DEPENDS+=		${LOCALBASE}/bin/ccache:devel/ccache
 CCACHE_WRAPPER_PATH?=	${LOCALBASE}/libexec/ccache
 CCACHE_BIN?=			${CCACHE_WRAPPER_PATH:C,/libexec/ccache$,,}/bin/ccache
 
+# Make ccache more efficient.
+# https://ccache.dev/manual/4.1.html#_compiling_in_different_directories
+MAKE_ENV+=	CCACHE_BASEDIR="${WRKSRC}" CCACHE_NOHASHDIR=yes
+TEST_ENV+=	CCACHE_BASEDIR="${WRKSRC}" CCACHE_NOHASHDIR=yes
+CONFIGURE_ENV+=	CCACHE_BASEDIR="${WRKSRC}" CCACHE_NOHASHDIR=yes
+CFLAGS+=	-fdebug-prefix-map=${WRKSRC}=.
+
 .if exists(${CCACHE_WRAPPER_PATH})
 # Prepend the ccache dir into the PATH and setup ccache env
 PATH:=	${CCACHE_WRAPPER_PATH}:${PATH}
