@@ -74,6 +74,18 @@ CCACHE_PKG_PREFIX?=		${LOCALBASE}
 CCACHE_WRAPPER_PATH?=	${CCACHE_PKG_PREFIX}/libexec/ccache
 CCACHE_BIN?=			${CCACHE_PKG_PREFIX}/bin/ccache
 
+# Make ccache more efficient.
+# https://ccache.dev/manual/4.9.1.html#_compiling_in_different_directories
+MAKE_ENV+=	CCACHE_BASEDIR="${WRKSRC}" CCACHE_NOHASHDIR=yes
+# Disable ccache for test: reduce possible error surface.
+TEST_ENV+=	CCACHE_DISABLE=yes
+# Disable ccache for configure:
+# 1. Performance profit is negative.
+# 2. CMake have some issues and may miss /usr/local/include in some cases.
+CONFIGURE_ENV+=	CCACHE_DISABLE=yes
+CFLAGS+=	-fdebug-prefix-map=${WRKSRC}=.
+CXXFLAGS+=	-fdebug-prefix-map=${WRKSRC}=.
+
 # Avoid depends loops between ccache and pkg
 .    if !defined(NO_CCACHE_DEPEND) && \
     ${PKGORIGIN} != ${PKG_ORIGIN}
