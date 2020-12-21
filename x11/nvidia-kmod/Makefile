@@ -93,7 +93,8 @@ SUB_PATCHES += extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c
 .endif
 .if ${NVVERSION} < 460.039
 .  if ${NVVERSION} >= 358.009
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src_nvidia-modeset_nvidia-modeset-freebsd.c \
+		${FILESDIR}/extra-patch-src_nvidia_nvidia_os.c
 .  endif
 SUB_PATCHES+=	extra-patch-src-nvidia_ctl.c \
 		extra-patch-src-nvidia_linux.c
