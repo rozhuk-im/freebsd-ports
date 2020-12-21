@@ -1815,6 +1815,9 @@ CFLAGS:=	${CFLAGS:C/${_CPUCFLAGS}//}
 MAKE_ENV+=	MK_DEBUG_FILES=no
 MAKE_ENV+=	MK_KERNEL_SYMBOLS=no
 
+# Prevent merge options from /etc/make.conf then MAKE_CMD started.
+MAKE_ENV+=	__MAKE_CONF=/dev/null
+
 CONFIGURE_SHELL?=	${SH}
 MAKE_SHELL?=	${SH}
 
