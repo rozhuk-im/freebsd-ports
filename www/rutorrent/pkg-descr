@@ -1,0 +1,7 @@
+ruTorrent is a web frontend for rtorrent designed to emulate the look
+and feel of uTorrent WebUI so its appearance is quite similar to the
+"parent".
+The name "ruTorrent" is the combination of uTorrent and rtorrent.
+
+The original version of ruTorrent was based on an older version of
+uTorrent Webui but has been completely rewritten as of 3.0.

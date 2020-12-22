@@ -1,0 +1,30 @@
+[
+{ type: install
+  message: <<EOM
+
+rtorrent must be build with xml-rpc support.
+
+An example configuration file for nginx has been installed in
+%%EXAMPLESDIR%%.
+
+More information about setup:
+https://github.com/Novik/ruTorrent/wiki/MainInstall
+https://github.com/Novik/ruTorrent/wiki/Config
+https://github.com/Novik/ruTorrent/wiki/WebSERVER
+
+
+
+Do not forget add to rtorrent.conf:
+
+in case no rutorrent users configured:
+execute2 = {sh,-c,/usr/local/bin/php /usr/local/www/rutorrent/php/initplugins.php &}
+
+in case you have "USER" configured in rutorrent:
+execute2 = {sh,-c,/usr/local/bin/php /usr/local/www/rutorrent/php/initplugins.php USER &}
+
+More info: https://github.com/Novik/ruTorrent/wiki/Plugins#starting-plugins-with-rtorrent
+
+
+EOM
+}
+]
