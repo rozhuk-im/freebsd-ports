@@ -1,0 +1,15 @@
+[
+{ type: install
+  message: <<EOM
+
+Installation Type: Home Assistant Core.
+
+This port uses Virtual Environment and will download and install via pip
+all required python packets on first service run or on some actions in
+WebUI.
+
+$ service home-assistant forcerestart
+--- The Home Assistant can now be reached http://localhost:8123/
+EOM
+}
+]
