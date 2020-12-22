@@ -1,0 +1,102 @@
+#!/bin/sh
+#
+# PROVIDE: home-assistant
+# REQUIRE: NETWORKING SYSLOG mysql
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable home-assistant:
+#
+#home_assistant_enable="YES"
+
+. /etc/rc.subr
+
+name="home_assistant"
+rcvar="home_assistant_enable"
+
+load_rc_config $name
+
+: ${home_assistant_enable:="NO"}
+: ${home_assistant_user:="homeassistant"}
+: ${home_assistant_group:="homeassistant"}
+: ${home_assistant_config_dir:="/var/db/homeassistant"}
+: ${home_assistant_log_file:="/var/log/homeassistant.log"}
+: ${home_assistant_log_days:="7"}
+: ${home_assistant_chdir:="${home_assistant_config_dir}"}
+: ${home_assistant_jobs:=`getconf NPROCESSORS_ONLN | tr -cd '[:print:]'`}
+: ${home_assistant_env:="HOME=\"${home_assistant_config_dir}\" XDG_CACHE_HOME=\"${home_assistant_config_dir}/.cache\" VIRTUAL_ENV=\"${home_assistant_config_dir}/\" PATH=\"${home_assistant_config_dir}/bin/:${PATH}\" CPUCOUNT=${home_assistant_jobs}" MAKEFLAGS=\"-j${home_assistant_jobs}\"}
+
+
+pidfile="/var/run/${name}.pid"
+procname="${home_assistant_config_dir}/bin/%%PYTHON_VERSION%%"
+command="/usr/sbin/daemon"
+command_args="-S -t ${name} -T ${name} -p \"${pidfile}\" ${procname} -m homeassistant --log-no-color --log-file \"${home_assistant_log_file}\" --log-rotate-days \"${home_assistant_log_days}\" --config \"${home_assistant_config_dir}\""
+start_precmd="home_assistant_start_precmd"
+
+home_assistant_start_precmd() {
+	# create the file pid, and directory, with correct permissions
+	if [ ! -e "${pidfile}" ]; then
+		install -o "${home_assistant_user}" -g "${home_assistant_group}" /dev/null "${pidfile}";
+	else
+		chown "${home_assistant_user}:${home_assistant_group}" "${pidfile}";
+	fi
+	install -d -o "${home_assistant_user}" -g "${home_assistant_group}" -m 0700 "${home_assistant_config_dir}"
+	install -o "${home_assistant_user}" -g "${home_assistant_group}" -m 0600 /dev/null "${home_assistant_log_file}"
+	if [ -e "${home_assistant_config_dir}/pyver.txt" ]; then
+		__CUR_PY_VER=`cat "${home_assistant_config_dir}/pyver.txt" | tr -cd '[:print:]'`
+		if [ "${__CUR_PY_VER}" != "%%PYTHON_VERSION%%" ]; then
+			echo 'Python version change detected, rebuilding pyenv!'
+			rm -f "${home_assistant_config_dir}/pyvenv.cfg"
+			rm -rf	"${home_assistant_config_dir}/bin" \
+				"${home_assistant_config_dir}/cache" \
+				"${home_assistant_config_dir}/deps" \
+				"${home_assistant_config_dir}/include" \
+				"${home_assistant_config_dir}/lib" \
+				"${home_assistant_config_dir}/lib64" \
+				"${home_assistant_config_dir}/share" \
+				"${home_assistant_config_dir}/tts"
+		fi
+	fi
+
+	#export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/"
+	#export CFLAGS='-I/usr/local/include'
+	#export MAKEFLAGS="-j${home_assistant_jobs}" # CFLAGS=${CFLAGS}
+
+	if [ ! -e "${home_assistant_config_dir}/pyvenv.cfg" ]; then
+		echo 'Bootstaping venv.'
+		echo "%%PYTHON_VERSION%%" > "${home_assistant_config_dir}/pyver.txt"
+		su -m "${home_assistant_user}" -c "%%PYTHON_CMD%% -m venv \"${home_assistant_config_dir}\""
+		# _sqlite3 hack to avoid --system-site-packages.
+		mkdir -p "${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/lib-dynload/"
+		cp -af %%LOCALBASE%%/lib/%%PYTHON_VERSION%%/lib-dynload/*sqlite3* "${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/lib-dynload/"
+		# Install HA and some deps.
+		su -m "${home_assistant_user}" -c "env ${home_assistant_env} pip3 install numpy %%MSSQLCLIENT%% %%MYSQLCLIENT%% %%PYMYSQLCLIENT%% %%PGSQLCLIENT%% homeassistant==%%PORTVERSION%%"
+		# Enable FreeBSD support.
+		sed -i '.orig' \
+			-e 's|("darwin", "linux")|("darwin", "linux", "freebsd")|g' \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/__main__.py"
+		# Disable broken deps.
+		## PyTurboJPEG
+		sed -i '.orig' \
+			-e 's|.*PyTurboJPEG.*||g' \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/package_constraints.txt"
+		sed -i '.orig' \
+			-e 's|.*PyTurboJPEG.*||g' \
+			-e 's|"internal",|"internal"|g' \
+			-e '/^[[:space:]]*$/d' \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/components/camera/manifest.json" \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/components/stream/manifest.json"
+		## webrtc-noise-gain
+		sed -i '.orig' \
+			-e 's|.*webrtc-noise-gain.*||g' \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/package_constraints.txt"
+		sed -i '.orig' \
+			-e 's|.*webrtc-noise-gain.*||g' \
+			-e 's|"internal",|"internal"|g' \
+			-e '/^[[:space:]]*$/d' \
+				"${home_assistant_config_dir}/lib/%%PYTHON_VERSION%%/site-packages/homeassistant/components/assist_pipeline/manifest.json"
+	fi
+	su -m "${home_assistant_user}" -c "env ${home_assistant_env} ${procname} -m homeassistant --config \"${home_assistant_config_dir}\" --script ensure_config"
+	su -m "${home_assistant_user}" -c "env ${home_assistant_env} ${procname} -m homeassistant --config \"${home_assistant_config_dir}\" --script check_config"
+}
+
+run_rc_command "$1"
