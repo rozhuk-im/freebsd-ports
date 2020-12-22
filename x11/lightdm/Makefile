@@ -33,6 +33,7 @@ USE_RC_SUBR=	lightdm
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-tests # PAM errors
+CONFIGURE_ARGS+=--disable-liblightdm-qt --disable-liblightdm-qt5
 INSTALL_TARGET=	install-strip
 USERS=		lightdm
 GROUPS=		lightdm video
