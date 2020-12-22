@@ -517,7 +517,7 @@ polkitd:*:565:565::0:0:Polkit Daemon User:/var/empty:/usr/sbin/nologin
 # free: 567
 # free: 568
 # free: 569
-# free: 570
+homeassistant:*:570:570::0:0:Home Assistant:/var/db/homeassistant:/usr/sbin/nologin
 # free: 571
 # free: 572
 # free: 573
