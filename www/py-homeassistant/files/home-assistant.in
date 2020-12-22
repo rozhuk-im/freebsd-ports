@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# PROVIDE: home-assistant
+# REQUIRE: NETWORKING SYSLOG mysql
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable home-assistant:
+#
+#home_assistant_enable="YES"
+
+. /etc/rc.subr
+
+name="home_assistant"
+rcvar="home_assistant_enable"
+
+load_rc_config $name
+
+: ${home_assistant_enable:="NO"}
+: ${home_assistant_user:="homeassistant"}
+: ${home_assistant_group:="homeassistant"}
+: ${home_assistant_cache_dir:="/var/db/homeassistant/.cache"}
+: ${home_assistant_config_dir:="/var/db/homeassistant/conf"}
+: ${home_assistant_venv_dir:="/var/db/homeassistant/venv"}
+: ${home_assistant_log_file:="/var/log/homeassistant.log"}
+: ${home_assistant_log_days:="7"}
+: ${home_assistant_chdir:="${home_assistant_config_dir}"}
+: ${home_assistant_jobs:=`getconf NPROCESSORS_ONLN | tr -cd '[:print:]'`}
+: ${home_assistant_env:="HOME=\"${home_assistant_cache_dir}\" XDG_CACHE_HOME=\"${home_assistant_cache_dir}\" VIRTUAL_ENV=\"${home_assistant_venv_dir}/\" PATH=\"${home_assistant_venv_dir}/bin/:${PATH}\" CPUCOUNT=${home_assistant_jobs} MAKEFLAGS=\"-j${home_assistant_jobs}\""}
+
+
+pidfile="/var/run/${name}.pid"
+procname="${home_assistant_venv_dir}/bin/%%PYTHON_VERSION%%"
+command="/usr/sbin/daemon"
+command_args="-S -t ${name} -T ${name} -p \"${pidfile}\" ${procname} -m homeassistant --log-no-color --log-file \"${home_assistant_log_file}\" --log-rotate-days \"${home_assistant_log_days}\" --config \"${home_assistant_config_dir}\""
+start_precmd="home_assistant_start_precmd"
+
+home_assistant_start_precmd() {
+	# create the file pid, and directory, with correct permissions
+	if [ ! -e "${pidfile}" ]; then
+		install -o "${home_assistant_user}" -g "${home_assistant_group}" /dev/null "${pidfile}";
+	else
+		chown "${home_assistant_user}:${home_assistant_group}" "${pidfile}";
+	fi
+	install -d -o "${home_assistant_user}" -g "${home_assistant_group}" -m 0700 "${home_assistant_cache_dir}"
+	install -d -o "${home_assistant_user}" -g "${home_assistant_group}" -m 0700 "${home_assistant_config_dir}"
+	install -o "${home_assistant_user}" -g "${home_assistant_group}" -m 0600 /dev/null "${home_assistant_log_file}"
+	su -m "${home_assistant_user}" -c "env ${home_assistant_env} ${procname} -m homeassistant --config \"${home_assistant_config_dir}\" --script ensure_config"
+	su -m "${home_assistant_user}" -c "env ${home_assistant_env} ${procname} -m homeassistant --config \"${home_assistant_config_dir}\" --script check_config"
+}
+
+run_rc_command "$1"
