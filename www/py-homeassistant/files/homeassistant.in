@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# $FreeBSD$
+#
+# PROVIDE: homeassistant
+# REQUIRE: NETWORKING SYSLOG
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf to enable homeassistant:
+#
+#homeassistant_enable="YES"
+
+. /etc/rc.subr
+
+name="homeassistant"
+rcvar="homeassistant_enable"
+
+load_rc_config $name
+
+: ${homeassistant_enable:="NO"}
+: ${homeassistant_user:="homeassistant"}
+: ${homeassistant_group:="homeassistant"}
+: ${homeassistant_config_dir:="/var/db/homeassistant"}
+: ${homeassistant_log_file:="/var/log/home-assistant.log"}
+: ${homeassistant_log_days:="7"}
+
+
+pidfile="/var/run/${name}.pid"
+procname="%%PYTHON_CMD%%"
+command="%%PREFIX%%/bin/hass"
+command_args="--daemon --log-no-color --log-file \"${homeassistant_log_file}\" --log-rotate-days \"${homeassistant_log_days}\" --config \"${homeassistant_config_dir}\" --pid-file \"${pidfile}\""
+
+start_precmd="homeassistant_precmd"
+
+homeassistant_precmd() {
+	install -d -o ${homeassistant_user} -g ${homeassistant_group} -m 0700 ${homeassistant_config_dir}
+	install -o ${homeassistant_user} -g ${homeassistant_group} -m 0600 /dev/null ${homeassistant_log_file}
+	su -m ${homeassistant_user} -c "${command} --config \"${homeassistant_config_dir}\" --script ensure_config"
+	su -m ${homeassistant_user} -c "${command} --config \"${homeassistant_config_dir}\" --script check_config"
+}
+
+run_rc_command "$1"
