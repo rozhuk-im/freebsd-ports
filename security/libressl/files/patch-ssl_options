@@ -1,0 +1,60 @@
+--- include/tls.h
++++ include/tls.h
+@@ -133,6 +135,7 @@ int tls_config_set_ocsp_staple_mem(struct tls_config *_config,
+ int tls_config_set_ocsp_staple_file(struct tls_config *_config,
+     const char *_staple_file);
+ int tls_config_set_protocols(struct tls_config *_config, uint32_t _protocols);
++int tls_config_set_ssl_ctx_options(struct tls_config *_config, uint32_t _ssl_ctx_options);
+ int tls_config_set_session_fd(struct tls_config *_config, int _session_fd);
+ int tls_config_set_verify_depth(struct tls_config *_config, int _verify_depth);
+ 
+--- tls/tls.sym
++++ tls/tls.sym
+@@ -40,6 +40,7 @@ tls_config_set_keypair_ocsp_mem
+ tls_config_set_ocsp_staple_mem
+ tls_config_set_ocsp_staple_file
+ tls_config_set_protocols
++tls_config_set_ssl_ctx_options
+ tls_config_set_session_id
+ tls_config_set_session_lifetime
+ tls_config_set_session_fd
+--- tls/tls.c
++++ tls/tls.c
+@@ -504,6 +511,10 @@ tls_configure_ssl(struct tls *ctx, SSL_CTX *ssl_ctx)
+ 	if ((ctx->config->protocols & TLS_PROTOCOL_TLSv1_3) == 0)
+ 		SSL_CTX_set_options(ssl_ctx, SSL_OP_NO_TLSv1_3);
+ 
++	if (ctx->config->ssl_ctx_options) {
++		SSL_CTX_set_options(ssl_ctx, ctx->config->ssl_ctx_options);
++	}
++
+ 	if (ctx->config->alpn != NULL) {
+ 		if (SSL_CTX_set_alpn_protos(ssl_ctx, ctx->config->alpn,
+ 		    ctx->config->alpn_len) != 0) {
+--- tls/tls_config.c
++++ tls/tls_config.c
+@@ -699,6 +699,14 @@ tls_config_set_protocols(struct tls_config *config, uint32_t protocols)
+ 	return (0);
+ }
+ 
++int
++tls_config_set_ssl_ctx_options(struct tls_config *config, uint32_t _ssl_ctx_options)
++{
++	config->ssl_ctx_options = _ssl_ctx_options;
++
++	return (0);
++}
++
+ int
+ tls_config_set_session_fd(struct tls_config *config, int session_fd)
+ {
+--- tls/tls_internal.h
++++ tls/tls_internal.h
+@@ -99,6 +99,7 @@ struct tls_config {
+ 	struct tls_keypair *keypair;
+ 	int ocsp_require_stapling;
+ 	uint32_t protocols;
++	uint32_t ssl_ctx_options;
+ 	unsigned char session_id[TLS_MAX_SESSION_ID_LENGTH];
+ 	int session_fd;
+ 	int session_lifetime;
