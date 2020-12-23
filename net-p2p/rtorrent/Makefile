@@ -21,12 +21,14 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-debug
 LDFLAGS+=	-lexecinfo -pthread
 
-PLIST_FILES=	bin/rtorrent
+PLIST_FILES=	bin/rtorrent \
+		"@dir ${ETCDIR}" \
+		"@sample ${ETCDIR}/rtorrent.config.sample"
 PORTDOCS=	README
-PORTEXAMPLES=	rtorrent.rc
+USE_RC_SUBR=	rtorrent
 SUB_FILES=	pkg-message
 
-OPTIONS_DEFINE=	DOCS EXAMPLES IPV6 XMLRPC
+OPTIONS_DEFINE=	DOCS IPV6 XMLRPC
 OPTIONS_DEFAULT=XMLRPC
 XMLRPC_DESC=	Compile with xmlrpc-c support
 
@@ -47,12 +49,13 @@ post-patch:
 		-exec ${REINPLACE_CMD} -e '/include/s,tr1/,,' {} \;
 .endif
 
+post-install:
+	${MKDIR} ${STAGEDIR}${ETCDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/rtorrent.rc \
+		${STAGEDIR}${ETCDIR}/rtorrent.config.sample
+
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/
 	${INSTALL_DATA} ${WRKSRC}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}/
-
-post-install-EXAMPLES-on:
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
-	${INSTALL_DATA} ${WRKSRC}/doc/rtorrent.rc ${STAGEDIR}${EXAMPLESDIR}/
 
 .include <bsd.port.mk>
