@@ -1,0 +1,8 @@
+lib/kodi/addons/game.libretro.beetle-bsnes/game.libretro.beetle-bsnes.so
+share/kodi/addons/game.libretro.beetle-bsnes/addon.xml
+share/kodi/addons/game.libretro.beetle-bsnes/resources/buttonmap.xml
+share/kodi/addons/game.libretro.beetle-bsnes/resources/icon.png
+share/kodi/addons/game.libretro.beetle-bsnes/resources/screenshot-01.jpg
+share/kodi/addons/game.libretro.beetle-bsnes/resources/screenshot-02.jpg
+share/kodi/addons/game.libretro.beetle-bsnes/resources/screenshot-03.jpg
+share/kodi/addons/game.libretro.beetle-bsnes/resources/topology.xml

@@ -1,0 +1,9 @@
+lib/kodi/addons/game.libretro.fceumm/game.libretro.fceumm.so
+share/kodi/addons/game.libretro.fceumm/addon.xml
+share/kodi/addons/game.libretro.fceumm/changelog.txt
+share/kodi/addons/game.libretro.fceumm/resources/buttonmap.xml
+share/kodi/addons/game.libretro.fceumm/resources/icon.png
+share/kodi/addons/game.libretro.fceumm/resources/screenshot-01.jpg
+share/kodi/addons/game.libretro.fceumm/resources/screenshot-02.jpg
+share/kodi/addons/game.libretro.fceumm/resources/screenshot-03.jpg
+share/kodi/addons/game.libretro.fceumm/resources/topology.xml

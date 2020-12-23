@@ -1,0 +1,9 @@
+lib/kodi/addons/game.libretro.picodrive/game.libretro.picodrive.so
+share/kodi/addons/game.libretro.picodrive/addon.xml
+share/kodi/addons/game.libretro.picodrive/resources/buttonmap.xml
+share/kodi/addons/game.libretro.picodrive/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/game.libretro.picodrive/resources/screenshot-01.jpg
+share/kodi/addons/game.libretro.picodrive/resources/screenshot-02.jpg
+share/kodi/addons/game.libretro.picodrive/resources/screenshot-03.jpg
+share/kodi/addons/game.libretro.picodrive/resources/settings.xml
+share/kodi/addons/game.libretro.picodrive/resources/topology.xml

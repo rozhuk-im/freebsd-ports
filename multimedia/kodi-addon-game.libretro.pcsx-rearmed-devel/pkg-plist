@@ -1,0 +1,8 @@
+lib/kodi/addons/game.libretro.pcsx-rearmed/game.libretro.pcsx-rearmed.so
+share/kodi/addons/game.libretro.pcsx-rearmed/addon.xml
+share/kodi/addons/game.libretro.pcsx-rearmed/changelog.txt
+share/kodi/addons/game.libretro.pcsx-rearmed/resources/buttonmap.xml
+share/kodi/addons/game.libretro.pcsx-rearmed/resources/icon.png
+share/kodi/addons/game.libretro.pcsx-rearmed/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/game.libretro.pcsx-rearmed/resources/settings.xml
+share/kodi/addons/game.libretro.pcsx-rearmed/resources/topology.xml

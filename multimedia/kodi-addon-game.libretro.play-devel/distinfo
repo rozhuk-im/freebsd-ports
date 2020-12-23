@@ -1,0 +1,13 @@
+TIMESTAMP = 1587674926
+SHA256 (rozhuk-im-game.libretro.play-0.30.0-Leia-ce31f1a_GH0.tar.gz) = 12485c176bd850ec210e646cf91c10ea0be2022719a26c8287f93792877f6a9a
+SIZE (rozhuk-im-game.libretro.play-0.30.0-Leia-ce31f1a_GH0.tar.gz) = 4193174
+SHA256 (jpd002-Play--5e1c39017b46a02a3ec2b50390db0b0b936def86_GH0.tar.gz) = f45dc17d33c2878b2349cec8d73e1f49232f7488c620c7ce43bd4b46d6fc2614
+SIZE (jpd002-Play--5e1c39017b46a02a3ec2b50390db0b0b936def86_GH0.tar.gz) = 1770239
+SHA256 (jpd002-Play--CodeGen-88aaa95093538ce0731632b52e97fd8f3f6bcb4f_GH0.tar.gz) = 014986ae24d0be65f5dd00c44e3f9171162063199bb119b812f526364c92d369
+SIZE (jpd002-Play--CodeGen-88aaa95093538ce0731632b52e97fd8f3f6bcb4f_GH0.tar.gz) = 257257
+SHA256 (jpd002-Play--Framework-a29a0a852d8549cc88fdd9e1cc1d8921650dbfe0_GH0.tar.gz) = aeec74f61e14cde6a3ba6187bb1c43b603773d25b5286a72580673a958918120
+SIZE (jpd002-Play--Framework-a29a0a852d8549cc88fdd9e1cc1d8921650dbfe0_GH0.tar.gz) = 173724
+SHA256 (jpd002-Play-Dependencies-1d582d48c9768f13e38cc2860061a833ae30b4c2_GH0.tar.gz) = 4d42dc659add037c386958770d0a4815c53424e48ce4172ed79ec6ba67c2deb2
+SIZE (jpd002-Play-Dependencies-1d582d48c9768f13e38cc2860061a833ae30b4c2_GH0.tar.gz) = 4949299
+SHA256 (gulrak-filesystem-8ea72cfb7312ac1bce58ebc18cec599b0045bfc9_GH0.tar.gz) = 3b5dfcf467406a2f594f7f3755dab7cb67c2e1e6a2133b421afc36d3824b0a78
+SIZE (gulrak-filesystem-8ea72cfb7312ac1bce58ebc18cec599b0045bfc9_GH0.tar.gz) = 161495

@@ -1,0 +1,7 @@
+lib/kodi/addons/game.libretro.beetle-psx/game.libretro.beetle-psx.so
+share/kodi/addons/game.libretro.beetle-psx/addon.xml
+share/kodi/addons/game.libretro.beetle-psx/resources/buttonmap.xml
+share/kodi/addons/game.libretro.beetle-psx/resources/icon.png
+share/kodi/addons/game.libretro.beetle-psx/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/game.libretro.beetle-psx/resources/settings.xml
+share/kodi/addons/game.libretro.beetle-psx/resources/topology.xml

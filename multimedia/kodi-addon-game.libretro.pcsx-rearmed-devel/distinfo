@@ -1,0 +1,5 @@
+TIMESTAMP = 1585785530
+SHA256 (kodi-game-game.libretro.pcsx-rearmed-22.0.0.9-Leia_GH0.tar.gz) = d19740346723a8900284006972d6c5fae6ef5aed177c3b6928558790ff949a95
+SIZE (kodi-game-game.libretro.pcsx-rearmed-22.0.0.9-Leia_GH0.tar.gz) = 73065
+SHA256 (libretro-pcsx_rearmed-3c4ac5bb44b41d23eec217369eaa34f4e155f733_GH0.tar.gz) = 9ab6a392266319b8897f2129dff88f025990218fb4a47354879649c2e9e4befe
+SIZE (libretro-pcsx_rearmed-3c4ac5bb44b41d23eec217369eaa34f4e155f733_GH0.tar.gz) = 2272882

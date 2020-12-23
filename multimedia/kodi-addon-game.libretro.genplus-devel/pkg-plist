@@ -1,0 +1,11 @@
+lib/kodi/addons/game.libretro.genplus/game.libretro.genplus.so
+share/kodi/addons/game.libretro.genplus/addon.xml
+share/kodi/addons/game.libretro.genplus/changelog.txt
+share/kodi/addons/game.libretro.genplus/resources/buttonmap.xml
+share/kodi/addons/game.libretro.genplus/resources/icon.png
+share/kodi/addons/game.libretro.genplus/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/game.libretro.genplus/resources/screenshot-01.jpg
+share/kodi/addons/game.libretro.genplus/resources/screenshot-02.jpg
+share/kodi/addons/game.libretro.genplus/resources/screenshot-03.jpg
+share/kodi/addons/game.libretro.genplus/resources/settings.xml
+share/kodi/addons/game.libretro.genplus/resources/topology.xml

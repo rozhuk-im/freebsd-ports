@@ -1,0 +1,15 @@
+lib/kodi/addons/screensaver.stars/screensaver.stars.so
+lib/kodi/addons/screensaver.stars/screensaver.stars.so.19.0
+lib/kodi/addons/screensaver.stars/screensaver.stars.so.%%SOVERSION%%
+share/kodi/addons/screensaver.stars/addon.xml
+share/kodi/addons/screensaver.stars/resources/fanart.png
+share/kodi/addons/screensaver.stars/resources/icon.png
+share/kodi/addons/screensaver.stars/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/screensaver.stars/resources/screenshot-01.png
+share/kodi/addons/screensaver.stars/resources/screenshot-02.png
+share/kodi/addons/screensaver.stars/resources/screenshot-03.png
+share/kodi/addons/screensaver.stars/resources/settings.xml
+share/kodi/addons/screensaver.stars/resources/shaders/GL/frag.glsl
+share/kodi/addons/screensaver.stars/resources/shaders/GL/vert.glsl
+share/kodi/addons/screensaver.stars/resources/shaders/GLES/frag.glsl
+share/kodi/addons/screensaver.stars/resources/shaders/GLES/vert.glsl

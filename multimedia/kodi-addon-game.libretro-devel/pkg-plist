@@ -1,0 +1,8 @@
+lib/kodi/addons/game.libretro/game.libretro.so
+lib/kodi/addons/game.libretro/game.libretro.so.19.0
+lib/kodi/addons/game.libretro/game.libretro.so.%%SOVERSION%%
+share/kodi/addons/game.libretro/addon.xml
+share/kodi/addons/game.libretro/icon.png
+share/kodi/addons/game.libretro/resources/language/resource.language.de_de/strings.po
+share/kodi/addons/game.libretro/resources/language/resource.language.en_gb/strings.po
+share/kodi/addons/game.libretro/resources/settings.xml

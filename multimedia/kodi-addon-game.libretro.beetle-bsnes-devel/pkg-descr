@@ -1,0 +1,6 @@
+Standalone port of Mednafen bSNES to libretro, itself a fork of
+bsnes 0.59
+
+This port is for multimedia/kodi-devel only.
+
+WWW: https://github.com/libretro/beetle-bsnes-libretro
