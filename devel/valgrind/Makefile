@@ -46,12 +46,7 @@ USE_PERL5=	build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 SHEBANG_FILES=	callgrind/callgrind_annotate.in callgrind/callgrind_control.in
-
-EXTRA_PATCHES=	\
-		${FILESDIR}/accept4_syscall.patch:-p1 \
-		${FILESDIR}/jail_syscalls.patch:-p1 \
-		${FILESDIR}/kldload_syscalls.patch:-p1 \
-		${FILESDIR}/missing_fcntls.patch:-p1
+CFLAGS+=	-mstack-alignment=8
 
 PORTDOCS=	html
 
@@ -60,10 +55,6 @@ WRKSRC=		${WRKDIR}/${BB_ACCOUNT}-${BB_PROJECT}-${BB_COMMIT}
 CONFIGURE_ENV+=	ac_cv_path_PERL=${PERL}
 
 .include <bsd.port.options.mk>
-
-.if ${OSVERSION} > 1200030
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-ino64:-p1
-.endif
 
 .if ${ARCH} == "amd64"
 PLIST_SUB+=	AMD64="" ARCH=amd64
