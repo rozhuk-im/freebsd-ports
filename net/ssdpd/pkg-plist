@@ -1,0 +1,16 @@
+bin/ssdpd
+etc/rc.d/ssdpd
+@sample %%ETCDIR%%/ssdpd.conf.sample
+%%INSTALL_MEDIA_SRV%%@sample etc/php-fpm.d/upnp-server.conf.sample
+%%INSTALL_MEDIA_SRV%%@sample %%ETCDIR%%/nginx-upnp-full.conf.sample
+%%INSTALL_MEDIA_SRV%%@sample %%ETCDIR%%/nginx-upnp-handler.conf.sample
+%%INSTALL_MEDIA_SRV%%@sample %%ETCDIR%%/nginx-upnp-server.conf.sample
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/control/ContentDirectory.php
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/descr/ConnectionManager.xml
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/descr/ContentDirectory.wdsl
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/descr/ContentDirectory.xml
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/descr/X_MS_MediaReceiverRegistrar.xml
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/descr/root.xml
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/icons/dev-icon-48x48.png
+%%INSTALL_MEDIA_SRV%%%%DATADIR%%/www/upnp/presentation/about.html
+%%INSTALL_MEDIA_SRV%%@dir %%DATADIR%%/www/upnpdata
