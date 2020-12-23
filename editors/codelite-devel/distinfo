@@ -1,0 +1,15 @@
+TIMESTAMP = 1712861288
+SHA256 (eranif-codelite-17.0.0.20240408-c96ed5584981d444a9089ae90650bc056de5d52d_GH0.tar.gz) = 935f365c0124892c525bed61c5c855785b4e2efddd5c87910edc67780ca2492c
+SIZE (eranif-codelite-17.0.0.20240408-c96ed5584981d444a9089ae90650bc056de5d52d_GH0.tar.gz) = 28054226
+SHA256 (eranif-ctags-3e173d8d82fd2d3534feff0d822d6de36ca3d74e_GH0.tar.gz) = 7f22076d72397782b6d7672447536acacb35d0f52797952b36c7a785fb2c5b9a
+SIZE (eranif-ctags-3e173d8d82fd2d3534feff0d822d6de36ca3d74e_GH0.tar.gz) = 3008382
+SHA256 (cubicdaiya-dtl-cd45dd48089c6e9f7a595d920ddfb82c08d59150_GH0.tar.gz) = b02f3269cce38acfb1f13b64634112e7d8d4441dcdf541dafb3da2673715dd5a
+SIZE (cubicdaiya-dtl-cd45dd48089c6e9f7a595d920ddfb82c08d59150_GH0.tar.gz) = 26239
+SHA256 (eranif-tinyjson-a6b0d0d31a05a9f55b4944b3b20f769305eb583a_GH0.tar.gz) = 54e799a389f4dbbe61f68e5c6bce31ee19c465f625a5bcc385453e591465d2d1
+SIZE (eranif-tinyjson-a6b0d0d31a05a9f55b4944b3b20f769305eb583a_GH0.tar.gz) = 1342308
+SHA256 (eranif-wxdap-e5c7d35f17ca119aa99710244c0764b07f0cc4c6_GH0.tar.gz) = df75b86de2cca68069b7fd176b6e5df487e0b33500c08a3ac8935aa6fa0b5c50
+SIZE (eranif-wxdap-e5c7d35f17ca119aa99710244c0764b07f0cc4c6_GH0.tar.gz) = 73936
+SHA256 (jbeder-yaml-cpp-1b50109f7bea60bd382d8ea7befce3d2bd67da5f_GH0.tar.gz) = 66c0eddbe3697d8e77eba824496352e4c4c1212a41c7dd5dd43037c95504f6b2
+SIZE (jbeder-yaml-cpp-1b50109f7bea60bd382d8ea7befce3d2bd67da5f_GH0.tar.gz) = 1018208
+SHA256 (eranif-cc-wrapper-67713440e867493e74ce5c7ce0352b81eb4b726b_GH0.tar.gz) = 6b3abfd4d5a36ffe87456235d2c173c699651d491eec569be464f6d8aecf5a03
+SIZE (eranif-cc-wrapper-67713440e867493e74ce5c7ce0352b81eb4b726b_GH0.tar.gz) = 7689
