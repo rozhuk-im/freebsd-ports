@@ -18,12 +18,34 @@ USES=		gmake iconv libtool localbase:ldflags pathfix pkgconfig
 USE_CSTD=	c99
 USE_LDCONFIG=	yes
 
-CONFIGURE_ARGS+=	--disable-arts \
+CONFIGURE_ARGS+=	--enable-libc \
+			--disable-sensor \
+			--disable-alsatest \
+			--disable-arts \
+			--disable-esdtest \
 			--enable-diskaudio \
 			--enable-dummyaudio \
+			--disable-fusionsound \
+			--disable-fusionsound-shared \
+			--disable-ime \
+			--disable-ibus \
+			--disable-fcitx \
+			--disable-video-directfb \
+			--disable-directfb-shared \
 			--enable-video-dummy \
+			--disable-video-mir \
+			--disable-mir-shared \
+			--disable-video-opengles1 \
+			--disable-video-rpi \
+			--disable-video-vivante \
+			--disable-video-cocoa \
+			--disable-render-metal \
 			--disable-dbus \
 			--disable-input-tslib \
+			--disable-directx \
+			--disable-wasapi \
+			--disable-render-d3d \
+			--enable-clock_gettime \
 			--disable-rpath
 .if defined(MACHINE_CPU) && ${MACHINE_CPU:Mmmx}
 CONFIGURE_ARGS+=	--enable-mmx
@@ -113,7 +135,7 @@ SDL_ATOMIC_CONFIGURE_ENABLE=	atomic gcc-atomics
 SDL_AUDIO_CONFIGURE_ENABLE=	audio
 SDL_CPUINFO_CONFIGURE_ENABLE=	cpuinfo
 SDL_EVENTS_CONFIGURE_ENABLE=	events
-SDL_FILE_CONFIGURE_ENABLE=	filesystem
+SDL_FILE_CONFIGURE_ENABLE=	file filesystem
 SDL_HAPTIC_CONFIGURE_ENABLE=	haptic
 SDL_JOYSTICK_CONFIGURE_ENABLE=	joystick
 SDL_LOADSO_CONFIGURE_ENABLE=	loadso
@@ -222,6 +244,7 @@ IGNORE=	option VIDEO_X11 requires SDL_VIDEO
 CONFIGURE_ARGS+=	--enable-video-x11 \
 			--enable-x11-shared \
 			--enable-video-x11-xcursor \
+			--enable-video-x11-xdbe \
 			--enable-video-x11-xinerama \
 			--enable-video-x11-xinput \
 			--enable-video-x11-xrandr \
@@ -234,6 +257,7 @@ USE_XORG+=	xinerama xcursor xi xrandr xscrnsaver xxf86vm xext
 CONFIGURE_ARGS+=	--disable-video-x11 \
 			--disable-x11-shared \
 			--disable-video-x11-xcursor \
+			--disable-video-x11-xdbe \
 			--disable-video-x11-xinerama \
 			--disable-video-x11-xinput \
 			--disable-video-x11-xrandr \
