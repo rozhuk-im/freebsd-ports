@@ -1,0 +1,13 @@
+MET Norway Location Forecast
+
+A Python interface for the MET Norway Locationforecast/2.0 service.
+This is a free weather data service provided by the Norwegian
+Meteorological Institute.
+
+Features
+ - Get weather data for anywhere in the world
+ - Automatically take care of caching data
+ - Helpful classes for managing forecast data
+ - Convert between units of measurement
+
+WWW: https://github.com/Rory-Sullivan/metno-locationforecast
