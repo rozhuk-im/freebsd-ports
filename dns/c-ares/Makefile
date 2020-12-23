@@ -15,6 +15,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.md
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-werror
+CPPFLAGS:=	${CPPFLAGS} ${CFLAGS:M-D*}
+CFLAGS:=	${CFLAGS:N-D*}
 INSTALL_TARGET=	install-strip
 SSP_UNSAFE=	Refuses -l in LDFLAGS
 USES=		libtool pathfix compiler:c++11-lang gmake
