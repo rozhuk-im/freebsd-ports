@@ -36,6 +36,8 @@ ${_l:tu}_DEFAULT=	${lang:C/.*=//g}
 APACHE_DEFAULT?=	2.4
 # Possible values: 5, 18
 BDB_DEFAULT?=		5
+# Possible values: ccahe, ccahe-devel, ccahe-memcached, ccahe-memcached-static, ccahe-static
+CCACHE_DEFAULT?=	ccache
 # Possible values: 2, 3
 COROSYNC_DEFAULT?=	3
 # Possible values: rust, legacy
