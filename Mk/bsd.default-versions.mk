@@ -37,6 +37,8 @@ ${_l:tu}_DEFAULT=	${lang:C/.*=//g}
 APACHE_DEFAULT?=	2.4
 # Possible values: 5, 6, 18
 BDB_DEFAULT?=		5
+# Possible values: ccahe, ccahe-devel, ccahe-memcached, ccahe-memcached-static, ccahe-static
+CCACHE_DEFAULT?=	ccahe
 # Possible values: 2, 3
 COROSYNC_DEFAULT?=	2
 # Possible_values: full canna nox devel_full devel_nox

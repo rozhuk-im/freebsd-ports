@@ -38,7 +38,7 @@ WARNING+=	WITH_CCACHE_BUILD support disabled, please set CCACHE_DIR.
 # Avoid depends loops between ccache and pkg
 .	if !defined(NO_CCACHE_DEPEND) && \
     ${PKGORIGIN} != ${PKG_ORIGIN}
-BUILD_DEPENDS+=		${LOCALBASE}/bin/ccache:devel/ccache
+BUILD_DEPENDS+=		${LOCALBASE}/bin/ccache:devel/${CCACHE_DEFAULT}
 .	endif
 
 CCACHE_WRAPPER_PATH?=	${LOCALBASE}/libexec/ccache
