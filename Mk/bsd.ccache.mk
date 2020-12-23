@@ -89,7 +89,7 @@ CXXFLAGS+=	-fdebug-prefix-map=${WRKSRC}=.
 # Avoid depends loops between ccache and pkg
 .    if !defined(NO_CCACHE_DEPEND) && \
     ${PKGORIGIN} != ${PKG_ORIGIN}
-BUILD_DEPENDS+=		${CCACHE_BIN}:devel/ccache
+BUILD_DEPENDS+=		${CCACHE_BIN}:devel/${CCACHE_DEFAULT}
 .    endif
 
 .    if exists(${CCACHE_WRAPPER_PATH})
