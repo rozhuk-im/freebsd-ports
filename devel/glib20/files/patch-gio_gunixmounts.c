@@ -1,41 +1,33 @@
---- gio/gunixmounts.c.orig	2020-10-01 09:17:53.138733000 -0400
-+++ gio/gunixmounts.c	2020-10-15 13:05:40.628175000 -0400
-@@ -1389,6 +1389,8 @@
- 
- #elif (defined(HAVE_GETVFSSTAT) || defined(HAVE_GETFSSTAT)) && defined(HAVE_FSTAB_H) && defined(HAVE_SYS_MOUNT_H)
- 
-+G_LOCK_DEFINE_STATIC(getfsent);
-+
- static GList *
- _g_get_unix_mount_points (void)
+--- gio/gunixmounts.c.orig	2020-10-01 16:17:53.138733000 +0300
++++ gio/gunixmounts.c	2020-10-18 01:26:30.563084000 +0300
+@@ -1654,10 +1654,28 @@
+ GList *
+ g_unix_mount_points_get (guint64 *time_read)
  {
-@@ -1400,9 +1402,6 @@
-   struct stat sb;
- #endif
-   
--  if (!setfsent ())
--    return NULL;
--
-   return_list = NULL;
-   
- #ifdef HAVE_SYS_SYSCTL_H
-@@ -1433,6 +1432,11 @@
- #endif
- #endif
-   
-+  G_LOCK (getfsent);
-+  if (!setfsent ()) {
-+    G_UNLOCK (getfsent);
-+    return NULL;
++  static GList *mnt_pts_last = NULL;
++  static guint64 time_read_last = 0;
++  GList *mnt_pts = NULL;
++  guint64 time_read_now;
++  G_LOCK_DEFINE_STATIC (unix_mount_points);
++
++  G_LOCK (unix_mount_points);
++
++  time_read_now = get_mount_points_timestamp ();
++  if (time_read_now != time_read_last || mnt_pts_last == NULL) {
++    time_read_last = time_read_now;
++    g_list_free_full (mnt_pts_last, (GDestroyNotify) g_unix_mount_point_free);
++    mnt_pts_last = _g_get_unix_mount_points ();
 +  }
-   while ((fstab = getfsent ()) != NULL)
-     {
-       gboolean is_read_only = FALSE;
-@@ -1468,6 +1472,7 @@
-     }
-   
-   endfsent ();
-+  G_UNLOCK (getfsent);
-   
-   return g_list_reverse (return_list);
++  mnt_pts = g_list_copy_deep(mnt_pts_last, g_unix_mount_point_copy, NULL);
++
++  G_UNLOCK (unix_mount_points);
++
+   if (time_read)
+-    *time_read = get_mount_points_timestamp ();
++    *time_read = time_read_last;
+ 
+-  return _g_get_unix_mount_points ();
++  return mnt_pts;
  }
+ 
+ /**
