@@ -1,0 +1,6 @@
+Python control for LG speaker systems
+
+A simple Python API for controlling speakers from LG that can otherwise
+be controlled via the LG wifi speaker app.
+
+WWW: https://github.com/google/python-temescal
