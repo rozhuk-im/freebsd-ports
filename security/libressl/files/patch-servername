@@ -1,0 +1,114 @@
+--- include/tls.h
++++ include/tls.h
+@@ -75,6 +75,8 @@ extern "C" {
+ struct tls;
+ struct tls_config;
+ 
++typedef int (*tls_servername_cb)(struct tls *_ctx, const char *_servername,
++    void *_cb_arg);
+ typedef ssize_t (*tls_read_cb)(struct tls *_ctx, void *_buf, size_t _buflen,
+     void *_cb_arg);
+ typedef ssize_t (*tls_write_cb)(struct tls *_ctx, const void *_buf,
+@@ -160,6 +162,8 @@ int tls_config_add_ticket_key(struct tls_config *_config, uint32_t _keyrev,
+ struct tls *tls_client(void);
+ struct tls *tls_server(void);
+ int tls_configure(struct tls *_ctx, struct tls_config *_config);
++void tls_set_servername_cb(struct tls *_ctx,
++    tls_servername_cb _servername_cb, void *_cb_arg);
+ void tls_reset(struct tls *_ctx);
+ void tls_free(struct tls *_ctx);
+ 
+--- tls/tls.sym
++++ tls/tls.sym
+@@ -86,5 +86,6 @@ tls_peer_ocsp_url
+ tls_read
+ tls_reset
+ tls_server
++tls_set_servername_cb
+ tls_unload_file
+ tls_write
+--- tls/tls.c
++++ tls/tls.c
+@@ -271,6 +271,13 @@ tls_configure(struct tls *ctx, struct tls_config *config)
+ 	return (0);
+ }
+ 
++void tls_set_servername_cb(struct tls *ctx,
++    tls_servername_cb servername_cb, void *cb_arg)
++{
++	ctx->servername_cb = servername_cb;	
++	ctx->servername_cb_arg = cb_arg;	
++}
++
+ int
+ tls_cert_hash(X509 *cert, char **hash)
+ {
+--- tls/tls_internal.h
++++ tls/tls_internal.h
+@@ -198,6 +198,9 @@ struct tls {
+ 	tls_read_cb read_cb;
+ 	tls_write_cb write_cb;
+ 	void *cb_arg;
++
++	tls_servername_cb servername_cb;
++	void *servername_cb_arg;
+ };
+ 
+ int tls_set_mem(char **_dest, size_t *_destlen, const void *_src,
+--- tls/tls_server.c
++++ tls/tls_server.c
+@@ -28,6 +28,8 @@
+ #include <tls.h>
+ #include "tls_internal.h"
+ 
++static int tls_configure_server_sni(struct tls *ctx);
++
+ struct tls *
+ tls_server(void)
+ {
+@@ -79,7 +81,7 @@
+ }
+ 
+ static int
+-tls_servername_cb(SSL *ssl, int *al, void *arg)
++tls_server_servername_cb(SSL *ssl, int *al, void *arg)
+ {
+ 	struct tls *ctx = (struct tls *)arg;
+ 	struct tls_sni_ctx *sni_ctx;
+@@ -115,6 +117,14 @@
+ 	if ((conn_ctx->servername = strdup(name)) == NULL)
+ 		goto err;
+ 
++	if (conn_ctx->servername_cb != NULL) {
++		if (0 != conn_ctx->servername_cb(conn_ctx,
++		    conn_ctx->servername, conn_ctx->servername_cb_arg))
++			goto err;
++		if (tls_configure_server_sni(ctx) == -1)
++			goto err;
++	}
++
+ 	/* Find appropriate SSL context for requested servername. */
+ 	for (sni_ctx = ctx->sni_ctx; sni_ctx != NULL; sni_ctx = sni_ctx->next) {
+ 		if (tls_check_name(ctx, sni_ctx->ssl_cert, name,
+@@ -241,7 +251,7 @@
+ 	SSL_CTX_set_options(*ssl_ctx, SSL_OP_NO_CLIENT_RENEGOTIATION);
+ 
+ 	if (SSL_CTX_set_tlsext_servername_callback(*ssl_ctx,
+-	    tls_servername_cb) != 1) {
++	    tls_server_servername_cb) != 1) {
+ 		tls_set_error(ctx, TLS_ERROR_UNKNOWN,
+ 		    "failed to set servername callback");
+ 		goto err;
+@@ -357,8 +367,10 @@
+ 	if (tls_configure_server_ssl(ctx, &ctx->ssl_ctx,
+ 	    ctx->config->keypair) == -1)
+ 		goto err;
+-	if (tls_configure_server_sni(ctx) == -1)
+-		goto err;
++	if (ctx->servername_cb == NULL) {
++		if (tls_configure_server_sni(ctx) == -1)
++			goto err;
++	}
+ 
+ 	return (0);
+ 
