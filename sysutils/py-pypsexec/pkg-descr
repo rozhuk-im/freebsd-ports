@@ -1,0 +1,14 @@
+This library can run commands on a remote Windows host through Python.
+This means that it can be run on any host with Python and does not
+require any binaries to be present or a specific OS. It uses SMB/RPC to
+executable commands in a similar fashion to the popular PsExec tool.
+More details on this tool can be read on this blog post.
+
+The executable wrapper that is sent to the service is based on the
+PAExec library. PAExec is an free, redistributable and open source
+equivalent to Microsoft's PsExec application. This program is stored as
+a binary in this package and is used to run the remote service and
+start the process execution.
+
+
+WWW: https://github.com/jborean93/pypsexec
