@@ -20,7 +20,7 @@ BUILD_DEPENDS=	bash:shells/bash \
 
 USES=		gmake \
 		python:2.7,build
-USE_GCC=	4.8
+USE_GCC=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	freebsd
 GH_PROJECT=	uefi-edk2
@@ -33,12 +33,13 @@ OPTIONS_DEFINE=	DEBUG
 DEBUG_VARS=	uefi_target=DEBUG
 DEBUG_VARS_OFF=	uefi_target=RELEASE
 
-MAKE_ARGS+=	AS=${LOCALBASE}/bin/as \
-		AR=${LOCALBASE}/bin/ar \
-		LD=${LOCALBASE}/bin/ld \
-		OBJCOPY=${LOCALBASE}/bin/objcopy \
-		CC=${LOCALBASE}/bin/gcc48 \
-		CXX=${LOCALBASE}/bin/g++48
+MAKE_ARGS+=	AS="${AS}" \
+		AR="${AR}" \
+		LD="${LD}" \
+		OBJCOPY="${OBJCOPY}" \
+		CC="${CC}" \
+		CXX="${CXX}" \
+		CFLAGS='-Wno-error -I../h -I../support/set -DUSER_ZZSYN=1'
 
 BUILD_ARGS=-DDEBUG_ON_SERIAL_PORT=TRUE -D FD_SIZE_2MB
 
@@ -52,16 +53,22 @@ BUILD_ARGS+=	-DCSM_ENABLE=TRUE
 post-extract:
 	@${REINPLACE_CMD} -e 's|python|${PYTHON_CMD}|' ${WRKSRC}/BaseTools/Tests/GNUmakefile \
 							${WRKSRC}/BaseTools/BinWrappers/PosixLike/*
+	@${REINPLACE_CMD} -e 's|mStringFileName == .*)|mStringFileName == NULL)|' \
+		${WRKSRC}/EdkCompatibilityPkg/Sample/Tools/Source/UefiVfrCompile/VfrUtilityLib.cpp \
+		${WRKSRC}/BaseTools/Source/C/VfrCompile/VfrUtilityLib.cpp
+	@${REINPLACE_CMD} -e 's|while (StringPtr != .*)|while (StringPtr)|' \
+		${WRKSRC}/MdeModulePkg/Library/UefiHiiLib/HiiLib.c
+	# Clang specific.
+	@${REINPLACE_CMD} -e 's|-Wno-unused-but-set-variable|-Wno-error|g' \
+		-e 's|--oformat=elf64-x86-64|--format=elf64-x86-64|g' \
+		${WRKSRC}/BaseTools/Conf/tools_def.template
 
 do-build:
 	unset ARCH; unset MAKEFLAGS; ${MAKE_CMD} ${MAKE_ARGS} -C ${BUILD_WRKSRC}/BaseTools
 	${MKDIR} ${BUILD_WRKSRC}/Build;
-	${LN} -sf ${LOCALBASE}/bin/gcc48 ${BUILD_WRKSRC}/Build/gcc
-	${LN} -sf ${LOCALBASE}/bin/ld ${BUILD_WRKSRC}/Build/ld
-	${LN} -sf ${LOCALBASE}/bin/gmake ${BUILD_WRKSRC}/Build/make
-	${LN} -sf ${LOCALBASE}/bin/ar ${BUILD_WRKSRC}/Build/ar
-	${LN} -sf ${LOCALBASE}/bin/objcopy ${BUILD_WRKSRC}/Build/objcopy
-	${LN} -sf ${LOCALBASE}/bin/nasm ${BUILD_WRKSRC}/Build/nasm
+	@for f in ${CC}:gcc ${LD}:ld ${GMAKE}:make ${AR}:ar ${OBJCOPY}:objcopy nasm; do \
+		${LN} -vsf $$(command -v $${f%:*}) ${BUILD_WRKSRC}/Build/$${f##*:}; \
+	done
 .if defined(WITH_CSM)
 	bash -c " \
 		cd ${BUILD_WRKSRC}; \
