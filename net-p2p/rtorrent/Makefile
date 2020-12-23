@@ -22,11 +22,13 @@ LDFLAGS+=	-lexecinfo -pthread
 
 SUB_FILES=	pkg-message
 
-PLIST_FILES=	bin/rtorrent
+PLIST_FILES=	bin/rtorrent \
+		"@dir ${ETCDIR}" \
+		"@sample ${ETCDIR}/rtorrent.config.sample"
 PORTDOCS=	README
-PORTEXAMPLES=	rtorrent.rc
+USE_RC_SUBR=	rtorrent
 
-OPTIONS_DEFINE=		DOCS EXAMPLES IPV6 XMLRPC
+OPTIONS_DEFINE=		DOCS IPV6 XMLRPC
 OPTIONS_DEFAULT=	XMLRPC
 XMLRPC_DESC=		Compile with xmlrpc-c support
 
@@ -35,12 +37,13 @@ XMLRPC_LIB_DEPENDS=	libxmlrpc.so:net/xmlrpc-c
 XMLRPC_CONFIGURE_ON=	--with-xmlrpc-c
 XMLRPC_CONFIGURE_OFF=	--with-xmlrpc-c=no
 
+post-install:
+	${MKDIR} ${STAGEDIR}${ETCDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/rtorrent.rc \
+		${STAGEDIR}${ETCDIR}/rtorrent.config.sample
+
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/
 	${INSTALL_DATA} ${WRKSRC}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}/
-
-post-install-EXAMPLES-on:
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
-	${INSTALL_DATA} ${WRKSRC}/doc/rtorrent.rc ${STAGEDIR}${EXAMPLESDIR}/
 
 .include <bsd.port.mk>
