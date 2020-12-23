@@ -1,0 +1,20 @@
+SSDP announcer for UPnP/DLNA - a program for announcing the network UPnP/DLNA devices.
+Announcements are sent using IPv4 and IPv6 on the special multicast address.
+
+SSDP announcer allows you announce on your LAN any UPnP / DLNA server
+located on the Internet, another network segment.
+
+UPnP - based on the SSDP announcements for automatic detection of
+available devices on the local network, and HTTP to communicate with
+devices it has found.
+In HTTP, the data is transmitted using XML-SOAP.
+
+Archive with SSDP announcer contains implementation
+UPnP / DLNA Media server based on nginx and PHP.
+Nginx takes on work with http, php script processes the XML-SOAP
+requests from client devices.
+The script allows browsing through the file system and access to the
+media which is to be found.
+
+
+WWW: http://netlab.dhis.org/wiki/en:software:ssdpd:index
