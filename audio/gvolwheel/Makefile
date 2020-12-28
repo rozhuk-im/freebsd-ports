@@ -5,6 +5,10 @@ PORTNAME=	gvolwheel
 PORTVERSION=	1.0.2
 CATEGORIES=	audio
 
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	94cee9010bf47d32e8280a76a1354e88d79a6a30.patch:-p1
+
+
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Control volume by scrolling over tray icon
 
