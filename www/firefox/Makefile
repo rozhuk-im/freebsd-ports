@@ -53,6 +53,8 @@ MOZ_OPTIONS+=	--with-wasi-sysroot=${LOCALBASE}/share/wasi-sysroot
 EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-config_makefiles_rust.mk
 .endif
 
+POST_PLIST=	clean-plist
+
 post-extract:
 	@${SED} -e 's|@FIREFOX_ICON@|${FIREFOX_ICON:R}|;s|@MOZILLA@|${MOZILLA}|' \
 		<${FILESDIR}/firefox.desktop.in >${WRKDIR}/${MOZILLA_EXEC_NAME}.desktop
@@ -65,5 +67,9 @@ post-install:
 	${INSTALL_DATA} ${WRKDIR}/${MOZILLA_EXEC_NAME}.desktop ${STAGEDIR}${PREFIX}/share/applications
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
 	${LN} -sf ${FIREFOX_ICON_SRC} ${STAGEDIR}${PREFIX}/share/pixmaps/${FIREFOX_ICON}
+
+clean-plist:
+	@${MV} -f ${TMPPLIST} ${WRKDIR}/plist_files
+	@${GREP} -v '\.xpi$$' ${WRKDIR}/plist_files > ${TMPPLIST}
 
 .include <bsd.port.mk>
