@@ -58,6 +58,8 @@ BUILD_DEPENDS+=	${LOCALBASE}/share/wasi-sysroot/lib/wasm32-wasi/libc++abi.a:deve
 MOZ_OPTIONS+=	--with-wasi-sysroot=${LOCALBASE}/share/wasi-sysroot
 .endif
 
+POST_PLIST=	clean-plist
+
 post-patch:
 	@${REINPLACE_CMD} -e 's/%u/%U/' -e '/X-MultipleArgs/d' \
 		-e '/^Icon/s/=.*/=${FIREFOX_ICON:R}/' \
@@ -69,5 +71,9 @@ post-install:
 	${INSTALL_DATA} ${FIREFOX_DESKTOP} ${STAGEDIR}${PREFIX}/share/applications/
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
 	${LN} -sf ${FIREFOX_ICON_SRC} ${STAGEDIR}${PREFIX}/share/pixmaps/${FIREFOX_ICON}
+
+clean-plist:
+	@${MV} -f ${TMPPLIST} ${WRKDIR}/plist_files
+	@${GREP} -v '\.xpi$$' ${WRKDIR}/plist_files > ${TMPPLIST}
 
 .include <bsd.port.mk>
