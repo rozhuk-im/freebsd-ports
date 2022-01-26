@@ -4,6 +4,10 @@ PORTREVISION=	6
 CATEGORIES=	www
 PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	509134cdd22339b9c63decb8731119b639d21db3.patch:-p1 # https://github.com/phpvirtualbox/phpvirtualbox/pull/292
+PATCHFILES+=	26b0e999c715e7b690fa85013ebee3a8b31ad8c2.patch:-p1 # https://github.com/phpvirtualbox/phpvirtualbox/pull/299
+
 MAINTAINER=	vbox@FreeBSD.org
 COMMENT=	AJAX Web Interface for VirtualBox
 WWW=		https://sourceforge.net/projects/phpvirtualbox/
