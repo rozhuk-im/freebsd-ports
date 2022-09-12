@@ -1,0 +1,16 @@
+[
+{ type: install
+  message: <<EOM
+
+!!! ATTENTION !!!
+
+Make sure you flash the correct firmware! Flashing the wrong firmware
+might lock your bootloader preventing future flashing.
+
+
+Extra F/W sources:
+https://github.com/Koenkk/Z-Stack-firmware
+
+EOM
+}
+]
