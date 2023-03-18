@@ -278,6 +278,10 @@ CONFIGURE_ARGS+=	--enable-dynamic \
 			--with-threads=posix \
 			--with-tls=openssl
 
+.if ${SSL_DEFAULT:Mlibressl*}
+CONFIGURE_ENV+=		ac_cv_lib_ssl_SSL_export_keying_material_early=yes
+.endif # SSL_DEFAULT
+
 LIB_DEPENDS+=		libsasl2.so:security/cyrus-sasl2
 CONFIGURE_ARGS+=	--enable-spasswd \
 			--with-cyrus-sasl
