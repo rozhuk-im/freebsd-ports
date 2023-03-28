@@ -1,5 +1,3 @@
-TIMESTAMP = 1763048001
-SHA256 (libfuse-sshfs-sshfs-3.7.5_GH0.tar.gz) = 99d294101f1b8997653a84c35674c2e50c18323ea2c449412c0ed46b9d31ac35
-SIZE (libfuse-sshfs-sshfs-3.7.5_GH0.tar.gz) = 61693
-SHA256 (a73501f2159875aef082ab0a61731a8b7673d477.patch) = ef0fc2d7d292eb1bef4c2c63d0f5c1be00f29f9f4360cefe27fed70f69a31d10
-SIZE (a73501f2159875aef082ab0a61731a8b7673d477.patch) = 3032
+TIMESTAMP = 1682995633
+SHA256 (rozhuk-im-sshfs-sshfs-3.7.4-1dac7050efd1736d00a9aefc04d45643761246dc_GH0.tar.gz) = ca4b5906654a846d91b3bb42fa1b831de62e444412ee6eeb5468b3c38f8c0bfc
+SIZE (rozhuk-im-sshfs-sshfs-3.7.4-1dac7050efd1736d00a9aefc04d45643761246dc_GH0.tar.gz) = 65841
