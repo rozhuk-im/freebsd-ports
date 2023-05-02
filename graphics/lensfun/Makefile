@@ -47,6 +47,7 @@ CMAKE_ARGS+=	-DBUILD_TESTS:BOOL=ON
 .endif
 
 post-patch:
+	@${REINPLACE_CMD} -e '/OpenMP/d' ${WRKSRC}/tests/CMakeLists.txt
 	@${REINPLACE_CMD} -e '/#include <cmath>/ { x; s/^/#include <clocale>/; G; }' \
 		${WRKSRC}/tests/test_modifier_coord_centering_old.cpp \
 		${WRKSRC}/tests/test_modifier_coord_perspective_correction.cpp \
