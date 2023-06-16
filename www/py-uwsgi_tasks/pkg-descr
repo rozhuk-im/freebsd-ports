@@ -1,0 +1,5 @@
+UWSGI Tasks engine
+
+This package makes it to use UWSGI signal framework for asynchronous
+tasks management. It's more functional and flexible than cron scheduler,
+and can be used as replacement for celery in many cases.
