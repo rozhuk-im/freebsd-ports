@@ -1,3 +1,5 @@
-TIMESTAMP = 1618150313
-SHA256 (opentoonz-opentoonz-v1.5.0_GH0.tar.gz) = fba0f381fb71ffda89e6423b4d461450d4851f93830342e69e36313070af5990
-SIZE (opentoonz-opentoonz-v1.5.0_GH0.tar.gz) = 54677708
+TIMESTAMP = 1694453607
+SHA256 (opentoonz-opentoonz-v1.7.1_GH0.tar.gz) = d0daf60d06510efe15d0db3f9eed0162499ed58061504dca27892c2b9ea5f22d
+SIZE (opentoonz-opentoonz-v1.7.1_GH0.tar.gz) = 52852616
+SHA256 (6ef6ec2ce4e1da96c64172dbf97a0ff901808bb9.patch) = c277a58555ff722bdc3f3a307d48789fe71e3d1c0079bc4b9f67a7429b064cc2
+SIZE (6ef6ec2ce4e1da96c64172dbf97a0ff901808bb9.patch) = 1464
