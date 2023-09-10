@@ -24,6 +24,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/config/batches.xml
 %%DATADIR%%/stuff/config/brush.txt
 %%DATADIR%%/stuff/config/cleanupreslist.txt
+%%DATADIR%%/stuff/config/colornames.txt
 %%DATADIR%%/stuff/config/current.txt
 %%DATADIR%%/stuff/config/export-toonz.lua
 %%DATADIR%%/stuff/config/fdg/fld_10_4mm_acme.fdg
@@ -159,6 +160,10 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-handle_disabled.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-handle_disabled_light.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-handle_light.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-v-handle.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-v-handle_disabled.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-v-handle_disabled_light.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/black/slider-v-handle_light.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/table_small.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/timeline_config.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/black/toolbar_extension_horizontal.png
@@ -221,6 +226,8 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/slider-groove_disabled_dark.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/slider-handle.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/slider-handle_disabled.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/white/slider-v-handle.svg
+%%DATADIR%%/stuff/config/qss/Default/imgs/white/slider-v-handle_disabled.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/table_small.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/timeline_config.svg
 %%DATADIR%%/stuff/config/qss/Default/imgs/white/toolbar_extension_horizontal.png
@@ -274,6 +281,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/config/versioncontrol.xml
 %%DATADIR%%/stuff/doc/AddIno.pdf
 %%DATADIR%%/stuff/doc/BlurIno.pdf
+%%DATADIR%%/stuff/doc/BokehAdvancedIwa.html
 %%DATADIR%%/stuff/doc/BokehIwa.html
 %%DATADIR%%/stuff/doc/BokehRefIwa.html
 %%DATADIR%%/stuff/doc/ChannelSelectorIno.pdf
@@ -308,6 +316,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/doc/LICENSE/LICENSE_qt.txt
 %%DATADIR%%/stuff/doc/LICENSE/LICENSE_superlu.txt
 %%DATADIR%%/stuff/doc/LICENSE/LICENSE_tahoma2d.txt
+%%DATADIR%%/stuff/doc/LICENSE/LICENSE_tinyexr_openexr.txt
 %%DATADIR%%/stuff/doc/LICENSE/LICENSE_winink.txt
 %%DATADIR%%/stuff/doc/LICENSE/notice_about_modified_qt.txt
 %%DATADIR%%/stuff/doc/LevelAutoIno.pdf
@@ -402,6 +411,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/doc/español/img/perspective_distort.png
 %%DATADIR%%/stuff/doc/español/particlesFx.html
 %%DATADIR%%/stuff/doc/img/fx_iwa_bokeh.png
+%%DATADIR%%/stuff/doc/img/fx_iwa_bokeh_advanced.png
 %%DATADIR%%/stuff/doc/img/fx_iwa_bokeh_ref.png
 %%DATADIR%%/stuff/doc/img/fx_iwa_motionblur.png
 %%DATADIR%%/stuff/doc/img/fx_iwa_perspective_distort.png
@@ -413,6 +423,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/doc/particlesFx.html
 %%DATADIR%%/stuff/doc/日本語/AddIno.pdf
 %%DATADIR%%/stuff/doc/日本語/BlurIno.pdf
+%%DATADIR%%/stuff/doc/日本語/BokehAdvancedIwa.html
 %%DATADIR%%/stuff/doc/日本語/BokehIwa.html
 %%DATADIR%%/stuff/doc/日本語/BokehRefIwa.html
 %%DATADIR%%/stuff/doc/日本語/ChannelSelectorIno.pdf
@@ -463,6 +474,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/doc/日本語/VividLightIno.pdf
 %%DATADIR%%/stuff/doc/日本語/WarpHVIno.pdf
 %%DATADIR%%/stuff/doc/日本語/img/fx_iwa_bokeh.png
+%%DATADIR%%/stuff/doc/日本語/img/fx_iwa_bokeh_advanced.png
 %%DATADIR%%/stuff/doc/日本語/img/fx_iwa_bokeh_ref.png
 %%DATADIR%%/stuff/doc/日本語/img/fx_iwa_motionblur.png
 %%DATADIR%%/stuff/doc/日本語/img/fx_iwa_perspective_distort.png
@@ -485,8 +497,12 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/fxs/presets/STD_particlesFx/Steam.fx
 %%DATADIR%%/stuff/fxs/presets/STD_particlesFx/Trail smoke.fx
 %%DATADIR%%/stuff/fxs/presets/STD_particlesFx/Water bubbles.fx
+%%DATADIR%%/stuff/library/camera calibration/checkerboard.tif
+%%DATADIR%%/stuff/library/camera calibration/readme.txt
 %%DATADIR%%/stuff/library/clapperboards/images/board1.png
 %%DATADIR%%/stuff/library/clapperboards/preset_sample.clapperboard
+%%DATADIR%%/stuff/library/custom panel templates/drawing toolbox.ui
+%%DATADIR%%/stuff/library/custom panel templates/eight buttons.ui
 %%DATADIR%%/stuff/library/custom styles/Arc.0001.png
 %%DATADIR%%/stuff/library/custom styles/Arc.0002.png
 %%DATADIR%%/stuff/library/custom styles/Arc.0003.png
@@ -668,18 +684,100 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/custom styles/wave.pli
 %%DATADIR%%/stuff/library/custom styles/wave2.pli
 %%DATADIR%%/stuff/library/mypaint brushes/Licenses.txt
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/001_Pencil.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/001_Pencil_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/002_Frame-Line.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/002_Frame-Line_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/003_Dip-Pen.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/003_Dip-Pen_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/004_Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/004_Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/005_Calligraphy.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/005_Calligraphy_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/006_Paint-Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/006_Paint-Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/007_Line-Eraser.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/007_Line-Eraser_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/009_Soft-Eraser.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/009_Soft-Eraser_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/010_Fill.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/010_Fill_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/011_Marker.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/011_Marker_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/012_Flat-Marker.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/012_Flat-Marker_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/013_Pastel.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/013_Pastel_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/014_Crayon.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/014_Crayon_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/015_Van_Gogh.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/015_Van_Gogh_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/016_Flat-Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/016_Flat-Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/017_Thin-Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/017_Thin-Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/018_Pointed-Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/018_Pointed-Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/019_Classic-Paint.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/019_Classic-Paint_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/020_Wet-Brush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/020_Wet-Brush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/021_Wet-ScrubbingBrush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/021_Wet-ScrubbingBrush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/022_Watercolor.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/022_Watercolor_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/023_Wet-Watercolor.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/023_Wet-Watercolor_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/024_Splash.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/024_Splash_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/025_Sand.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/025_Sand_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/026_Knife.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/026_Knife_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/027_Add-Water.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/027_Add-Water_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/028_Blend.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/028_Blend_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/029_Smear.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/029_Smear_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/030_Grainy-Blend.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/030_Grainy-Blend_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/031_Cone.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/031_Cone_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/032_Clouds.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/032_Clouds_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/033_Grass.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/033_Grass_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/034_Leaf.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/034_Leaf_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/035_Sewing.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/035_Sewing_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/036_Plush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/036_Plush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/README.txt
+%%DATADIR%%/stuff/library/mypaint brushes/SLOS_MPB/gimp brush.txt
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/001_sketch.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/001_sketch_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/002_sketch_b.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/002_sketch_b_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/005_ink.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/005_ink_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/009_fill.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/009_fill_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/010_paint.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/010_paint_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/011_oilbrush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/011_oilbrush_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/014_impasto.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/014_impasto_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/016_gouache.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/016_gouache_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/018_airbrush.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/018_airbrush_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/020_water.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/020_water_prev.png
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/029_watercolor_texture.myb
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/029_watercolor_texture_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/028_splatter.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/028_splatter_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/038_crayon.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/038_crayon_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/039_chalk.myb
@@ -688,20 +786,50 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/040_marker_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/041_hatch.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/041_hatch_prev.png
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/042_stipple.myb
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/042_stipple_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/042_hatch_rough.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/042_hatch_rough_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/043_hatch mesh.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/043_hatch mesh_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/044_hatch_sparse.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/044_hatch_sparse_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/045_stipple.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/045_stipple_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/050_clouds.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/050_clouds_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/051_grass.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/051_grass_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/052_leaves.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/052_leaves_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/053_meadown.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/053_meadown_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/054_blossom.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/054_blossom_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/058_fur.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/058_fur_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/059_fur2.myb
 %%DATADIR%%/stuff/library/mypaint brushes/aotz/059_fur2_prev.png
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/060_eraser.myb
-%%DATADIR%%/stuff/library/mypaint brushes/aotz/060_eraser_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/060_texture_ground.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/060_texture_ground_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/061_texture_stone.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/061_texture_stone_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/063_texture_sand.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/063_texture_sand_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/065_texture_water.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/065_texture_water_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/070_surface_broad.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/070_surface_broad_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/073_surface_sketch.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/073_surface_sketch_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/074_surface_sketch2.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/074_surface_sketch2_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/090_smear.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/090_smear_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/095_grainy_blend.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/095_grainy_blend_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/098_kneaded_eraser.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/098_kneaded_eraser_prev.png
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/099_eraser.myb
+%%DATADIR%%/stuff/library/mypaint brushes/aotz/099_eraser_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/classic/blend+paint.myb
 %%DATADIR%%/stuff/library/mypaint brushes/classic/blend+paint_prev.png
 %%DATADIR%%/stuff/library/mypaint brushes/classic/blending_knife.myb
@@ -1244,9 +1372,12 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/particles/star.0004.tif
 %%DATADIR%%/stuff/library/particles/star.0005.tif
 %%DATADIR%%/stuff/library/particles/toothpaste.0001.tif
+%%DATADIR%%/stuff/library/shaders/HSLBlendGPU.xml
 %%DATADIR%%/stuff/library/shaders/caustics.xml
 %%DATADIR%%/stuff/library/shaders/fireball.xml
 %%DATADIR%%/stuff/library/shaders/glitter.xml
+%%DATADIR%%/stuff/library/shaders/programs/HSLBlendGPU.frag
+%%DATADIR%%/stuff/library/shaders/programs/HSLBlendGPU_ports.vert
 %%DATADIR%%/stuff/library/shaders/programs/caustics.frag
 %%DATADIR%%/stuff/library/shaders/programs/fireball.frag
 %%DATADIR%%/stuff/library/shaders/programs/glitter.frag
@@ -1273,6 +1404,65 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/textures/Paper 4.BMP
 %%DATADIR%%/stuff/library/textures/arabesque.bmp
 %%DATADIR%%/stuff/library/textures/brickwork.bmp
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0001.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0002.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0003.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0004.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0005.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0006.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0007.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0008.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0009.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0010.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0011.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0012.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0013.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0014.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0015.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0016.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0017.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0018.png
+%%DATADIR%%/stuff/library/textures/brush tips/dry_brush.0019.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0001.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0002.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0003.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0004.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0005.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0006.png
+%%DATADIR%%/stuff/library/textures/brush tips/fluffy.0007.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0001.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0002.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0003.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0004.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0005.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0006.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0007.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0008.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0009.png
+%%DATADIR%%/stuff/library/textures/brush tips/single_line.0010.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0001.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0002.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0003.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0004.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0005.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0006.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0007.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0008.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0009.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0010.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0011.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0012.png
+%%DATADIR%%/stuff/library/textures/brush tips/streaky.0013.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0001.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0002.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0003.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0004.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0005.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0006.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0007.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0008.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0009.png
+%%DATADIR%%/stuff/library/textures/brush tips/thick.0010.png
 %%DATADIR%%/stuff/library/textures/carpet.bmp
 %%DATADIR%%/stuff/library/textures/chessboard.bmp
 %%DATADIR%%/stuff/library/textures/clouds.bmp
@@ -1313,13 +1503,13 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/vector brushes/large_brush2.pli
 %%DATADIR%%/stuff/library/vector brushes/large_brush3.pli
 %%DATADIR%%/stuff/library/vector brushes/large_brush4.pli
-%%DATADIR%%/stuff/library/vector brushes/logo.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush1.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush2.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush3.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush4.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush5.pli
 %%DATADIR%%/stuff/library/vector brushes/medium_brush6.pli
+%%DATADIR%%/stuff/library/vector brushes/otlogo.pli
 %%DATADIR%%/stuff/library/vector brushes/scratch.pli
 %%DATADIR%%/stuff/library/vector brushes/scribble_chalk.pli
 %%DATADIR%%/stuff/library/vector brushes/simple_lace.pli
@@ -1338,7 +1528,11 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/library/vector brushes/thickening.pli
 %%DATADIR%%/stuff/library/vector brushes/trail_shape1.pli
 %%DATADIR%%/stuff/library/vector brushes/trail_shape2.pli
+%%DATADIR%%/stuff/library/xsheetpdfpresets/a3_6sec.ini
+%%DATADIR%%/stuff/library/xsheetpdfpresets/b4_3sec.ini
+%%DATADIR%%/stuff/library/xsheetpdfpresets/b4_6sec.ini
 %%DATADIR%%/stuff/profiles/layouts/check.bmp
+%%DATADIR%%/stuff/profiles/layouts/fxs/SHADER_HSLBlendGPU.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/SHADER_caustics.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/SHADER_fireball.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/SHADER_glitter.xml
@@ -1367,6 +1561,7 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_dissolveFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_embossFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_erodeDilateFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_externalPaletteFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_fadeFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_fourPointsGradientFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_freeDistortFx.xml
@@ -1423,20 +1618,27 @@ share/metainfo/io.github.OpenToonz.appdata.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_AdjustExposureFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_BarrelDistortFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_BloomFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_BokehAdvancedFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_BokehFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_BokehRefFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_CorridorGradientFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_DirectionalBlurFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_FloorBumpFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_FlowBlurFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_FlowPaintBrushFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_FractalNoiseFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_GlareFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_GradientWarpFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_LinearGradientFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_MotionBlurCompFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_MotionFlowFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_PNPerspectiveFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_PerspectiveDistortFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_RainbowFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_SoapBubbleFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_SpectrumFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_SpinGradientFx.xml
+%%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_TangentFlowFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_TextFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_TileFx.xml
 %%DATADIR%%/stuff/profiles/layouts/fxs/STD_iwa_TiledParticlesFx.xml
