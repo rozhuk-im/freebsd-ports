@@ -71,4 +71,5 @@ PLIST_SUB+=	${_gd}="@comment "
 . endif
 .endfor
 
+.include "${MASTERDIR}/Makefile.targets"
 .include <bsd.port.post.mk>
