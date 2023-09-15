@@ -57,4 +57,5 @@ MESON_ARGS+=	-Dglx=disabled \
 		-Dplatforms=""
 .endif
 
+.include "${MASTERDIR}/Makefile.targets"
 .include <bsd.port.post.mk>
