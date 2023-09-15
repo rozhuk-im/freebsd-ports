@@ -135,6 +135,8 @@ PLIST_SUB+=	${_vd}="@comment "
 . endif
 .endfor
 
+.include "${MASTERDIR}/Makefile.targets"
+
 post-install:
 	@${RM} -r ${STAGEDIR}/etc/OpenCL
 	${INSTALL_DATA} ${FILESDIR}/01-freebsd.conf \
