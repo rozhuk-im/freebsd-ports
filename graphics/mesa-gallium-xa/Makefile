@@ -48,4 +48,5 @@ MESON_ARGS+=	-Dgallium-xa=enabled
 MESON_ARGS+=	-Dintel-rt=disabled # https://gitlab.freedesktop.org/mesa/mesa/-/issues/10629
 .endif
 
+.include "${MASTERDIR}/Makefile.targets"
 .include <bsd.port.post.mk>
