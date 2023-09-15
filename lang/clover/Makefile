@@ -57,6 +57,8 @@ CONFIGURE_ENV+=	PKG_CONFIG_PATH="${LLVM_PREFIX}/libdata/pkgconfig"
 MESON_ARGS+=	-Dintel-rt=disabled # https://gitlab.freedesktop.org/mesa/mesa/-/issues/10629
 .endif
 
+.include "${MASTERDIR}/Makefile.targets"
+
 pre-patch:
 	@if [ -e ${LOCALBASE}/bin/llvm-config${LLVM_VERSION} ] && \
 		! [ -e ${LOCALBASE}/bin/clang${LLVM_VERSION} ]; then \
