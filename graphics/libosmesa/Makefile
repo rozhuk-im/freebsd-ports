@@ -49,6 +49,8 @@ MESON_ARGS+=	-Dosmesa=true
 MESON_ARGS+=	-Dintel-rt=disabled # https://gitlab.freedesktop.org/mesa/mesa/-/issues/10629
 .endif
 
+.include "${MASTERDIR}/Makefile.targets"
+
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/include/GL
 	${INSTALL_DATA} ${WRKSRC}/include/GL/osmesa.h \
