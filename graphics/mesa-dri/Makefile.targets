@@ -1,0 +1,18 @@
+# this file holds common targets
+
+post-patch:
+	# Disable some autostaff.
+	@${REINPLACE_CMD} -e 's|dep_elf = dependency.*|dep_elf = null_dep|g' \
+		-e 's|dep_libudev =.*|dep_libudev = null_dep|g' \
+		-e 's|dep_openmp =.*|dep_openmp = null_dep|g' \
+		-e 's|dep_xcb_keysyms =.*|dep_xcb_keysyms = null_dep|g' \
+		${WRKSRC}/meson.build
+	# Force use libelf headers from base.
+	# gelf.h includes <libelf.h> so remove it to avoid conflict between
+	# </usr/include/libelf.h> and <libelf.h>=/usr/local/include/libelf.h.
+	${REINPLACE_CMD} -e 's|#include <gelf.h>||g' \
+		-e 's|#include <libelf.h>|#include </usr/include/libelf.h>|g' \
+		${WRKSRC}/src/amd/common/ac_rtld.c \
+		${WRKSRC}/src/amd/common/ac_rgp_elf_object_pack.c \
+		${WRKSRC}/src/gallium/drivers/r600/evergreen_compute.c \
+		${WRKSRC}/src/gallium/frontends/clover/llvm/codegen/native.cpp
