@@ -86,6 +86,7 @@ KEYRING_MESON_ENABLED=	keyring
 NAUTILUS_DESC=		Nautilus plugin
 NAUTILUS_USE=		GNOME=nautilus3
 NAUTILUS_MESON_TRUE=	nautilus
+NAUTILUS_MESON_ENABLED=	thumbnail_cache
 
 SPELL_DESC=		spell checking support
 SPELL_MESON_ENABLED=	gspell
