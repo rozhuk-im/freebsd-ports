@@ -195,6 +195,7 @@ STREAM_REALIP_CONFIGURE_ON=	--with-stream_realip_module
 STREAM_SSL_USES=		ssl
 STREAM_SSL_CONFIGURE_ON=	--with-stream_ssl_module
 STREAM_SSL_PREREAD_CONFIGURE_ON=--with-stream_ssl_preread_module
+STREAM_EXTRA_PATCHES=		${PATCHDIR}/extra-patch-proxy_protov2
 
 ### External modules
 .include "Makefile.extmod"
