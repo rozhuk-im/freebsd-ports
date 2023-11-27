@@ -23,7 +23,7 @@ USE_GITLAB=	yes
 GL_TAGNAME=	b74b67f0f321875492968f7097b9d6e82a66d7df
 USE_XORG=	pciaccess pixman
 CONFIGURE_ENV=	ac_cv_header_sys_sysinfo_h=no # XXX ports/242236
-CONFIGURE_ARGS=	--with-builderstring="${DISTVERSIONFULL}"
+CONFIGURE_ARGS=	--with-builderstring="${DISTVERSIONFULL}" --disable-tools
 TEST_TARGET=	check
 
 # XXX bug 214593: SNA crashes on pre-SandyBridge hardware
