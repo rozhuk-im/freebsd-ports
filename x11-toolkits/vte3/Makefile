@@ -34,6 +34,8 @@ MESON_ARGS=	-Da11y=true \
 		-D_systemd=false \
 		-Dglade=false \
 		-Dvapi=true
+# Disable build time flooding.
+CFLAGS+=	-Wno-cast-function-type-strict
 
 # VTE API minor version
 PLIST_SUB=	API_VER=91
@@ -53,5 +55,9 @@ GNUTLS_MESON_TRUE=	gnutls
 GTK4_LIB_DEPENDS=	libgraphene-1.0.so:graphics/graphene
 GTK4_USE=		GNOME=gtk40
 GTK4_MESON_TRUE=	gtk4
+
+post-patch-GNUTLS-off:
+	${REINPLACE_CMD} -e 's|#ifndef WITH_GNUTLS|#if 0|g' \
+		${WRKSRC}/src/vte.cc
 
 .include <bsd.port.mk>
