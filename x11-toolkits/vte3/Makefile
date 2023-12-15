@@ -30,6 +30,8 @@ MESON_ARGS=	-Da11y=true \
 		-D_systemd=false \
 		-Dglade=false \
 		-Dvapi=true
+# Disable build time flooding.
+CFLAGS+=	-Wno-cast-function-type-strict
 
 # Disable build time flooding.
 CFLAGS+=	-Wno-cast-function-type-strict
