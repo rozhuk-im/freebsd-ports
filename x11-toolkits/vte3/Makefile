@@ -32,6 +32,8 @@ MESON_ARGS=	-Da11y=true \
 		-Dicu=true \
 		-D_systemd=false \
 		-Dvapi=true
+# Disable build time flooding.
+CFLAGS+=	-Wno-cast-function-type-strict
 
 # shlib version numbers come from gtk3/4 meson options, not from PYTHON_VER
 PLIST_SUB=	VERSION=2.91 VER3=3.91
@@ -50,5 +52,9 @@ GNUTLS_MESON_OFF=	-Dgnutls=false
 
 GTK4_USE=		GNOME=gtk40
 GTK4_MESON_ON=		-Dgtk4=true
+
+post-patch-GNUTLS-off:
+	${REINPLACE_CMD} -e 's|#ifndef WITH_GNUTLS|#if 0|g' \
+		${WRKSRC}/src/vte.cc
 
 .include <bsd.port.mk>
