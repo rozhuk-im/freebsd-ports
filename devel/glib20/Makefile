@@ -44,6 +44,7 @@ MESON_ARGS=	-Db_lundef=false \
 		-Dselinux=disabled \
 		-Dsysprof=disabled \
 		-Dsystemtap=disabled \
+		-Dlibelf=disabled \
 		-Dxattr=false
 BINARY_ALIAS=	python3=${PYTHON_CMD}
 PORTSCOUT=	limitw:1,even
@@ -109,6 +110,12 @@ post-patch:
 		${WRKSRC}/gio/xdgmime/xdgmime.c \
 		${WRKSRC}/glib/gutils.c \
 		${WRKSRC}/glib/tests/utils.c
+	# Force use libelf headers from base.
+	# gelf.h includes <libelf.h> so remove it to avoid conflict between
+	# </usr/include/libelf.h> and <libelf.h>=/usr/local/include/libelf.h.
+	${REINPLACE_CMD} -e 's|#include <gelf.h>||g' \
+		-e 's|#include <libelf.h>|#include </usr/include/libelf.h>|g' \
+		${WRKSRC}/gio/gresource-tool.c
 
 CODEGENDIR=	${PREFIX}/share/glib-2.0/codegen
 
