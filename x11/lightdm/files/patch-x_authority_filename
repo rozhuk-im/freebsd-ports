@@ -1,0 +1,27 @@
+--- data/lightdm.conf
++++ data/lightdm.conf
+@@ -6,7 +6,7 @@
+ # minimum-display-number = Minimum display number to use for X servers
+ # minimum-vt = First VT to run displays on
+ # lock-memory = True to prevent memory from being paged to disk
+-# user-authority-in-system-dir = True if session authority should be in the system location
++# user-authority-in-system-dir = True if session authority should be in the system location, else XDG_RUNTIME_DIR or home dir will be used
+ # guest-account-script = Script to be run to setup guest account
+ # logind-check-graphical = True to on start seats that are marked as graphical by logind
+ # log-directory = Directory to log information to
+--- src/session-child.c
++++ src/session-child.c
+@@ -602,6 +581,13 @@
+     /* Write X authority */
+     if (x_authority)
+     {
++        /* If XDG_RUNTIME_DIR is set and user-authority-in-system-dir=false than use
++         * XDG_RUNTIME_DIR to store .Xauthority file. */
++        const gchar *runtime_dir = pam_getenv (pam_handle, "XDG_RUNTIME_DIR");
++        if (runtime_dir && x_authority_filename && g_str_has_suffix (x_authority_filename, ".Xauthority")) {
++            x_authority_filename = g_build_filename (runtime_dir, ".Xauthority", NULL);
++        }
++
+         gboolean drop_privileges = geteuid () == 0;
+         if (drop_privileges)
+             privileges_drop (user_get_uid (user), user_get_gid (user));
