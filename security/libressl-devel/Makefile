@@ -64,8 +64,6 @@ post-patch-MAN3-off:
 
 post-install:
 	${RM} -r ${STAGEDIR}/${PREFIX}/etc/ssl/cert.pem
-	${RMDIR} ${STAGEDIR}${PREFIX}/etc/ssl/certs
-	${LN} -s /etc/ssl/certs ${STAGEDIR}${PREFIX}/etc/ssl/certs
 
 post-stage-MAN3-on:
 	(cd ${STAGEDIR}${PREFIX}; ${FIND} share/man/man3 -not -type d | \
