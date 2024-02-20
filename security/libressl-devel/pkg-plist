@@ -1,7 +1,6 @@
 %%NC%%bin/nc
 bin/ocspcheck
 bin/openssl
-etc/ssl/certs
 etc/ssl/openssl.cnf
 etc/ssl/x509v3.cnf
 include/openssl/aes.h
@@ -94,4 +93,5 @@ share/man/man1/openssl.1.gz
 share/man/man5/openssl.cnf.5.gz
 share/man/man5/x509v3.cnf.5.gz
 share/man/man8/ocspcheck.8.gz
+@dir etc/ssl/certs
 @dir include/openssl
