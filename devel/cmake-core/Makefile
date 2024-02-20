@@ -44,7 +44,7 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--no-system-curl \
 		--no-system-nghttp2 \
 		--verbose
-.if defined(WITH_CCACHE_BUILD)
+.if defined(WITH_CCACHE_BUILD) && !defined(NO_CCACHE)
 CONFIGURE_ARGS+=	--enable-ccache
 .endif
 CONFIGURE_ENV=	MAKE=${MAKE}
