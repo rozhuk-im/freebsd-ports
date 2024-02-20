@@ -38,7 +38,7 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--parallel=${MAKE_JOBS_NUMBER} \
 		--verbose \
 		--init="${WRKSRC}/InitialCache.cmake"
-.if defined(WITH_CCACHE_BUILD)
+.if defined(WITH_CCACHE_BUILD) && !defined(NO_CCACHE)
 CONFIGURE_ARGS+=	--enable-ccache
 .endif
 CONFIGURE_ENV=	MAKE=${MAKE}
