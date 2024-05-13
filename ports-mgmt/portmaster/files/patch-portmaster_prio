@@ -1,0 +1,20 @@
+--- portmaster
++++ portmaster
+@@ -324,7 +324,7 @@
+ 			builtin test -n "$dir" -a -d "$pd/$dir"; }
+ pm_kill   () { kill "$@" >/dev/null 2>/dev/null; }
+ pm_make   () { ( unset -v CUR_DEPS INSTALLED_LIST PM_DEPTH build_l PM_URB_LIST;
+-		 /usr/bin/nice /usr/bin/make $PM_MAKE_ARGS "$@"; ); }
++		 /usr/sbin/idprio 31 /usr/bin/nice -n 20 /usr/bin/make $PM_MAKE_ARGS "$@"; ); }
+ pm_make_b () { /usr/bin/make $PM_MAKE_ARGS BEFOREPORTMK=bpm "$@"; }
+ pm_mktemp () {
+ 	pm_mktemp_file=`/usr/bin/mktemp -t f-${PM_PARENT_PID}-$1 2>&1` ||
+@@ -339,7 +339,7 @@
+ pm_find_s         () { $PM_SU_CMD /usr/bin/find "$@"; }
+ pm_install_s      () { $PM_SU_CMD /usr/bin/install -p -o root -g wheel -m 644 $1 $2; }
+ pm_make_s         () { ( unset -v CUR_DEPS INSTALLED_LIST PM_DEPTH build_l PM_URB_LIST;
+-			 $PM_SU_CMD /usr/bin/nice /usr/bin/make $PM_MAKE_ARGS "$@"; ); }
++			 $PM_SU_CMD /usr/sbin/idprio 31 /usr/bin/nice -n 20 /usr/bin/make $PM_MAKE_ARGS "$@"; ); }
+ pm_mkdir_s        () { $PM_SU_CMD /bin/mkdir -p $1; }
+ pm_pkg_delete_s   () {
+ 	for f in "$@"; do
