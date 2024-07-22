@@ -1,14 +1,10 @@
 PORTNAME=		libaravis
-DISTVERSION=		0.8.20
-PORTREVISION=	3
+DISTVERSION=		0.8.31
 CATEGORIES=		devel
 
-PATCH_SITES=		https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES=		cb27eb4e4c38553b6dfbbc70cc18caa51a365107.patch:-p1 # FreeBSD support
-
-MAINTAINER=		rozhuk.im@gmail.com
+MAINTAINER=		ports@FreeBSD.org
 COMMENT=		Camera control and image acquisition library
-WWW=		https://github.com/AravisProject/aravis
+WWW=			https://github.com/AravisProject/aravis
 
 LICENSE=		LGPL21+
 LICENSE_FILE=		${WRKSRC}/COPYING
@@ -24,14 +20,15 @@ INSTALL_TARGET=		install-strip
 MESON_ARGS=		-Dpacket-socket=disabled -Dviewer=disabled	\
 			-Dgst-plugin=disabled -Dtests=false
 
-DOCSDIR=		${PREFIX}/share/gtk-doc/html/aravis-0.8
+DOCSDIR=		${PREFIX}/share/doc/aravis-0.8
+MANSDIR=		${PREFIX}/share/man/man1
 
 OPTIONS_DEFINE=		DOCS GIR NLS FAST_HEARTBEAT USB
 OPTIONS_DEFAULT=	USB
 OPTIONS_SUB=		yes
 
 DOCS_MESON_ENABLED=	documentation
-DOCS_BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
+DOCS_BUILD_DEPENDS=	gi-docgen:textproc/py-gi-docgen
 
 GIR_DESC=		Build Gobject Introspection
 GIR_USE=		GNOME=introspection:build
