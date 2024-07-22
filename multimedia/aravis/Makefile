@@ -1,11 +1,10 @@
 PORTNAME=		aravis
-DISTVERSION=		0.8.20
-PORTREVISION=	2
+DISTVERSION=		0.8.31
 CATEGORIES=		multimedia
 
-MAINTAINER=		rozhuk.im@gmail.com
+MAINTAINER=		ports@FreeBSD.org
 COMMENT=		Camera control and image acquisition viewer
-WWW=		https://github.com/AravisProject/aravis
+WWW=			https://github.com/AravisProject/aravis
 
 LICENSE=		LGPL21+
 LICENSE_FILE=		${WRKSRC}/COPYING
