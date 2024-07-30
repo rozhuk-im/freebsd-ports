@@ -1,6 +1,6 @@
 PORTNAME=	phabricator
 PORTVERSION=	20211218
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel
 PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 RUN_DEPENDS=	arcanist-lib${PHP_PKGNAMESUFFIX}>=20210113_4:devel/arcanist-lib@${PHP_FLAVOR} \
 		git:devel/git
 
-USES=		cpe php:cli,flavors shebangfix
+USES=		cpe dos2unix php:cli,flavors shebangfix
 CPE_VENDOR=	phacility
 USE_GITHUB=	yes
 GH_ACCOUNT=	phacility
@@ -23,6 +23,7 @@ USE_PHP=	ctype curl fileinfo filter iconv mbstring mysqli pcntl posix \
 		zip
 USE_RC_SUBR=	phd
 
+DOS2UNIX_GLOB=	*.php
 SHEBANG_FILES=	resources/timezones/*.php scripts/*.php scripts/almanac/*.php \
 		scripts/cache/*.php scripts/celerity/*.php scripts/daemon/*.php \
 		scripts/daemon/exec/exec_daemon.php scripts/diviner/*.php \
