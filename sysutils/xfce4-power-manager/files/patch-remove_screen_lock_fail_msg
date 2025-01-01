@@ -1,0 +1,53 @@
+--- src/xfpm-manager.c
++++ src/xfpm-manager.c
+@@ -347,14 +347,8 @@
+     }
+     else if (action == LID_TRIGGER_LOCK_SCREEN)
+     {
+-      if (!xfce_screensaver_lock (manager->priv->screensaver))
+-      {
+-        xfce_dialog_show_error (NULL, NULL,
+-                                _("None of the screen lock tools ran "
+-                                  "successfully, the screen will not "
+-                                  "be locked."));
+-      }
+-      else if (manager->priv->dpms != NULL)
++      xfce_screensaver_lock (manager->priv->screensaver);
++      if (manager->priv->dpms != NULL)
+         xfpm_dpms_set_mode (manager->priv->dpms, XFPM_DPMS_MODE_OFF);
+     }
+     else if (action == LID_TRIGGER_SHUTDOWN)
+--- src/xfpm-power.c
++++ src/xfpm-power.c
+@@ -294,30 +294,7 @@
+ 
+   if (lock_screen)
+   {
+-    if (!xfce_screensaver_lock (power->priv->screensaver) && !force)
+-    {
+-      GtkWidget *dialog;
+-      gboolean ret;
+-
+-      dialog = gtk_message_dialog_new (NULL,
+-                                       GTK_DIALOG_MODAL,
+-                                       GTK_MESSAGE_QUESTION,
+-                                       GTK_BUTTONS_YES_NO,
+-                                       _("None of the screen lock tools ran "
+-                                         "successfully, the screen will not "
+-                                         "be locked.\n"
+-                                         "Do you still want to continue to "
+-                                         "suspend the system?"));
+-      ret = gtk_dialog_run (GTK_DIALOG (dialog));
+-      gtk_widget_destroy (dialog);
+-
+-      if (!ret || ret == GTK_RESPONSE_NO)
+-      {
+-        if (brightness != NULL)
+-          g_object_unref (brightness);
+-        return;
+-      }
+-    }
++    xfce_screensaver_lock (power->priv->screensaver);
+   }
+ 
+   if (g_strcmp0 (sleep_time, "Hibernate") == 0)
