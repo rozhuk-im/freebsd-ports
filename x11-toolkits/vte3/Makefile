@@ -56,8 +56,4 @@ GTK4_LIB_DEPENDS=	libgraphene-1.0.so:graphics/graphene
 GTK4_USE=		GNOME=gtk40
 GTK4_MESON_TRUE=	gtk4
 
-post-patch-GNUTLS-off:
-	${REINPLACE_CMD} -e 's|#ifndef WITH_GNUTLS|#if 0|g' \
-		${WRKSRC}/src/vte.cc
-
 .include <bsd.port.mk>
