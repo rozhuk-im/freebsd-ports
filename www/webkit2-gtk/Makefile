@@ -59,6 +59,8 @@ CPE_VENDOR=	webkitgtk
 CPE_PRODUCT=	webkitgtk
 
 BINARY_ALIAS=		python=${PYTHON_CMD}
+# Remove flags that broke build: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=284242
+CXXFLAGS:=		${CXXFLAGS:N-fno-delete-null-pointer-checks}
 CXXFLAGS+=		-DFIXED_EXECUTABLE_MEMORY_POOL_SIZE_IN_MB=32 \
 			-I${LOCALBASE}/include -lsysinfo
 CMAKE_ARGS=		-DPORT=GTK
