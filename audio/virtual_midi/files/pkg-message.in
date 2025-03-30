@@ -1,0 +1,22 @@
+[
+{ type: install
+  message: <<EOM
+
+!!! NOTICE !!!
+
+FreeBSD Foundation refuses to support this project.
+
+!!! NOTICE !!!
+
+
+Add to /etc/rc.conf:
+virtual_midi_enable="YES"
+virtual_oss_sequencer_enable="YES"
+
+Run:
+service virtual_midi restart
+service virtual_oss_sequencer restart
+
+EOM
+}
+]
