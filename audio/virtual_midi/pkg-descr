@@ -1,0 +1,10 @@
+Creates software MIDI devices for H/W sound cards without MIDI support.
+
+virtual_midi: creates raw MIDI device backed to H/W sound card.
+It is tinny wrapper to send MIDI events to software synthesizer backend.
+Only FluidSynth based backend implemented.
+
+virtual_oss_sequencer: creates OSS sequencer device that emulate kernel
+sequencer and work with all available raw MIDI devices in system.
+It handles: timer, enum and panic commands, all other commans is send
+to MIDI devices.
