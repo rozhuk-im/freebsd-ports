@@ -1,0 +1,6 @@
+Creates software MIDI devices for H/W sound cards without MIDI support.
+
+virtual_midi: creates raw MIDI device backed to H/W sound card.
+
+virtual_oss_sequencer: creates OSS sequencer device that emulate kernel
+sequencer and work with all available raw MIDI devices.
