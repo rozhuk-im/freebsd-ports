@@ -1,0 +1,5 @@
+Analyzer of security features in executable binaries
+
+binary-security-check is a command line utility that analyzes executable
+binaries looking for features that make the executable more secure, or
+less prone to some vulnerabilities.
