@@ -1,0 +1,15 @@
+--- src/command-line-after-help.txt.orig	2025-02-22 01:43:36 UTC
++++ src/command-line-after-help.txt
+@@ -18,10 +18,10 @@ - /usr/lib/
+ following directories:
+ - /lib/
+ - /usr/lib/
+-- /lib64/
+-- /usr/lib64/
++- /usr/local/lib/
+ - /lib32/
+ - /usr/lib32/
++- /usr/local/lib32/
+ 
+ The tools "readelf" and "ldd" can be used to help find the path of the C library
+ needed by the analyzed files, which is given by the --libc parameter.
