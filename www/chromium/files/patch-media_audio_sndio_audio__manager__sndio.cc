@@ -1,6 +1,6 @@
---- media/audio/sndio/audio_manager_sndio.cc.orig	2025-07-02 06:08:04 UTC
+--- media/audio/sndio/audio_manager_sndio.cc.orig	2025-08-20 00:01:12 UTC
 +++ media/audio/sndio/audio_manager_sndio.cc
-@@ -0,0 +1,213 @@
+@@ -0,0 +1,214 @@
 +// Copyright (c) 2012 The Chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
 +// found in the LICENSE file.
@@ -22,6 +22,7 @@
 +#include "media/audio/pulse/pulse_util.h"
 +#endif
 +#if defined(USE_ALSA)
++#include "base/logging.h"
 +#include "media/audio/alsa/audio_manager_alsa.h"
 +#endif
 +#include "media/audio/fake_audio_manager.h"
