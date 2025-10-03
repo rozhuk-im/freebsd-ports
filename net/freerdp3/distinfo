@@ -3,3 +3,5 @@ SHA256 (freerdp-3.21.0.tar.gz) = ec1409ce88020eeebc54e20cc0766cbe7d2e2f4bd382c70
 SIZE (freerdp-3.21.0.tar.gz) = 11379178
 SHA256 (akallabeth-webview-2a0a130_GH0.tar.gz) = 22448da4658b73cc20e6944d9a351ab6c40d1a50026997f8278f63713f5f7c07
 SIZE (akallabeth-webview-2a0a130_GH0.tar.gz) = 185888
+SHA256 (84bffcd74f0c4d6d651637ef06b172bdd233a0a8.patch) = 9180d3602250b8e00c12460eb4b5afd30f9c0c5eb2f3e2651f27de261e460678
+SIZE (84bffcd74f0c4d6d651637ef06b172bdd233a0a8.patch) = 3802
