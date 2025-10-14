@@ -122,9 +122,11 @@ CONFIGURE_ARGS:=	${CONFIGURE_ARGS:N${LTO_CONFIGURE_ON}}
 .endif
 
 post-patch:
-# disable the detection of includes and library from libuuid,
+# disable the detection of includes and library from libuuid, libb2,
 # which introduces hidden dependency and breaks build
-	@${REINPLACE_CMD} -e 's|uuid/uuid.h|ignore_&|' ${WRKSRC}/configure
+	@${REINPLACE_CMD} -e 's|uuid/uuid.h|ignore_&|' \
+			-e 's|x$$with_builtin_blake2|with_builtin_blake2___|' \
+			${WRKSRC}/configure
 
 # disable detection of multiarch as it breaks with clang >= 13, which adds a
 # major.minor version number in -print-multiarch output, confusing Python
