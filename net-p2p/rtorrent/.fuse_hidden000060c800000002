@@ -1,5 +1,10 @@
 PORTNAME=	rtorrent
+<<<<<<< HEAD
+DISTVERSION=	0.16.2
+PORTREVISION=	1
+=======
 DISTVERSION=	0.15.6
+>>>>>>> 02b849a19395 (Revert "net-p2p/libtorrent: Use native kqueue(2)")
 CATEGORIES=	net-p2p
 MASTER_SITES=	https://github.com/rakshasa/rtorrent/releases/download/v${DISTVERSION}/
 
