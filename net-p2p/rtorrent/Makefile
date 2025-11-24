@@ -16,7 +16,7 @@ LIB_DEPENDS=	libtorrent.so:net-p2p/libtorrent
 USES=		compiler:c++17-lang ncurses pkgconfig
 USE_RC_SUBR=	rtorrent
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-debug \
+CONFIGURE_ARGS=	--enable-debug \
 		--with-xmlrpc-tinyxml2
 
 SUB_FILES=	pkg-message
