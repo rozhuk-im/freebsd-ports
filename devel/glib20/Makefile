@@ -87,8 +87,11 @@ MESON_ARGS+=	-Dintrospection=enabled
 .if exists(/usr/include/sys/inotify.h)
 MESON_ARGS+=	-Dfile_monitor_backend='inotify'
 .else
-LIB_DEPENDS+=	libinotify.so:devel/libinotify
-MESON_ARGS+=	-Dfile_monitor_backend='libinotify-kqueue'
+OPTIONS_DEFINE+=		FAM_ALTBACKEND
+FAM_ALTBACKEND_DESC=		Alternate file monitor backend
+FAM_ALTBACKEND_MESON_ON=	-Dfile_monitor_backend='kqueue'
+FAM_ALTBACKEND_LIB_DEPENDS_OFF=	libinotify.so:devel/libinotify
+FAM_ALTBACKEND_MESON_OFF=	-Dfile_monitor_backend='libinotify-kqueue'
 .endif
 
 .if ${FLAVOR:U} == default
@@ -118,6 +121,15 @@ post-patch:
 		${WRKSRC}/gio/gresource-tool.c
 
 CODEGENDIR=	${PREFIX}/share/glib-2.0/codegen
+
+pre-configure-FAM_ALTBACKEND-on:
+	@${REINPLACE_CMD} -e 's|kqueue-helper.c|kqueue_fnm.c|g ; \
+		s|.*kqueue-missing.c.*||g ; \
+		s|.*dep-list.c.*||g' \
+		${WRKSRC}/gio/kqueue/meson.build
+	@${CP} -f ${FILESDIR}/gkqueuefilemonitor.c ${WRKSRC}/gio/kqueue/gkqueuefilemonitor.c
+	@${CP} ${FILESDIR}/kqueue_fnm.c ${WRKSRC}/gio/kqueue/kqueue_fnm.c
+	@${CP} ${FILESDIR}/kqueue_fnm.h ${WRKSRC}/gio/kqueue/kqueue_fnm.h
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/GConf/gsettings
