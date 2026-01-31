@@ -134,7 +134,10 @@ post-patch:
 			${WRKSRC}/plug-ins/pygimp/Makefile.in
 	@${REINPLACE_CMD} \
 		-e 's|x86_64|amd64|g' \
+		${WRKSRC}/configure.ac
+.if ${LIBRSVG2_DEFAULT:Mrust}
+	@${REINPLACE_CMD} \
 		-e 's|libpixbufloader-svg.so|libpixbufloader_svg.so|g' \
 		${WRKSRC}/configure.ac
-
+.endif
 .include <bsd.port.mk>
