@@ -178,6 +178,7 @@ move-uniquefiles:
 		if [ -n "${UNIQUE_${sufxtype}_EXTRA_EXT}" ]; then \
 			fname=$${fname%${UNIQUE_${sufxtype}_EXTRA_EXT}}; \
 		fi; \
+		${MV} ${STAGEDIR}${PREFIX}/$${fname}${UNIQUE_SUFFIX} ${STAGEDIR}${PREFIX}/$${fname} | true; \
 		if [ -e ${STAGEDIR}${PREFIX}/$${fname} -o -L ${STAGEDIR}${PREFIX}/$${fname} ]; then \
 			ofname=$${fname##*/}; \
 			newf=$${fname%/*}/$${ofname%${UNIQUE_${sufxtype}_WITH_EXT}}${UNIQUE_SUFFIX}$${ofname#$${ofname%${UNIQUE_${sufxtype}_WITH_EXT}}}; \
