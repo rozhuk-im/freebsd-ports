@@ -1,0 +1,140 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+	<title>Converse</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content="Converse XMPP/Jabber Chat"/>
+	<meta name="author" content="JC Brand" />
+	<meta name="keywords" content="xmpp chat webchat converse.js" />
+	<link rel="shortcut icon" type="image/ico" href="./dist/images/favicon.ico"/>
+	<link rel="manifest" href="./manifest.json">
+	<link type="text/css" rel="stylesheet" media="screen" href="./dist/converse.css" />
+	<script src="./3rdparty/libsignal-protocol.js"></script>
+	<script src="./dist/converse.js"></script>
+</head>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	"name": "Converse",
+	"description": "Open source XMPP chat client for the web",
+	"url": "https://conversejs.org",
+	"applicationCategory": "CommunicationApplication",
+	"operatingSystem": "Web Browser",
+}
+</script>
+
+<body class="converse-fullscreen">
+<noscript>You need to enable JavaScript to run the Converse.js chat app.</noscript>
+<div id="conversejs-bg"></div>
+<script>
+    /*
+    @licstart
+    This is free and unencumbered software released into the public domain.
+
+    Anyone is free to copy, modify, publish, use, compile, sell, or
+    distribute this software, either in source code form or as a compiled
+    binary, for any purpose, commercial or non-commercial, and by any
+    means.
+
+    In jurisdictions that recognize copyright laws, the author or authors
+    of this software dedicate any and all copyright interest in the
+    software to the public domain. We make this dedication for the benefit
+    of the public at large and to the detriment of our heirs and
+    successors. We intend this dedication to be an overt act of
+    relinquishment in perpetuity of all present and future rights to this
+    software under copyright law.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+    OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    OTHER DEALINGS IN THE SOFTWARE.
+
+    For more information, please refer to <http://unlicense.org/>
+    @licend
+    */
+
+    /* https://conversejs.org/docs/html/builds.html
+       https://kanet.ru/docs/html/index.html
+
+       converse.min.js
+       bundled and minified default build of converse.js, includes within
+       it all of converse.js’s dependencies, which include for example jQuery.
+
+       converse-no-dependencies.js
+       bundle contains only the core Converse code and none of the 3rd
+       party dependencies. This might be useful if you need to load the
+       dependencies separately.
+
+       converse-headless.js
+       The headless build is a bundle of all the non-UI parts of Converse,
+       and its aim is to provide you with an XMPP library (and application)
+       on which you can build your own UI.
+    */
+
+    /* https://conversejs.org/docs/html/configuration.html */
+    converse.initialize({
+	assets_path: './dist/',
+	blacklisted_plugins: [
+		'converse-bosh'
+	],
+	authentication: 'login',
+	reuse_scram_keys: true,
+	default_domain: 'YOUR_DOMAIN',
+	domain_placeholder: 'YOUR_DOMAIN',
+	allow_registration: false,
+	auto_reconnect: true,
+	ping_interval: 60,
+	discover_connection_methods: false,
+	websocket_url: 'wss://YOUR_DOMAIN/XMPP-WEBSOCKET',
+	show_connection_url_input: false,
+	csi_waiting_time: 300,
+	auto_list_rooms: true,
+	auto_away: 600,
+	auto_xa: 1200,
+	idle_presence_timeout: 300,
+	allow_message_retraction: 'own',
+	message_archiving: 'always',
+	message_archiving_timeout: 30000,
+	archived_messages_page_size: 50,
+	muc_history_max_stanzas: 50,
+	prune_messages_above: 200,
+	pruning_behavior: 'unscrolled',
+	mam_request_all_pages: false, /* This setting turns the paging off, and Converse will only fetch the latest page. */
+	muc_send_probes: true,
+	muc_subscribe_to_rai: true,
+	muc_show_logs_before_join: true,
+	allow_message_styling: true,
+	render_media: true,
+	allowed_audio_domains: null,
+	allowed_image_domains: null,
+	allowed_video_domains: null,
+	fetch_url_headers: false,
+	lazy_load_vcards: true,
+	show_controlbox_by_default: true,
+	embed_3rd_party_media_players: false,
+	show_self_in_roster: true,
+	visible_toolbar_buttons: {
+		call: false,
+		spoiler: true,
+		emoji: true,
+		toggle_occupants: true
+	},
+	muc_hats: ['xep317', 'vcard_roles'],
+	enable_smacks: true,
+	smacks_max_unacked_stanzas: 30,
+	stanza_timeout: 30000,
+	time_format: 'HH:mm',
+	view_mode: 'fullscreen'
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+[
+{ type: install
+  message: <<EOM
+
+ATTENTION: https is required to work!
+
+
+An example configuration file has been installed in
+%%WWWDIR%%/index.html.
+
+
+More information about setup:
+https://conversejs.org/docs/configuration/
+
+
+Example nginx config with change URL and redirect to https:
+	location ^~ /chat/ {
+		alias			%%WWWDIR%%/;
+		if ($ssl_protocol = "") { # Redirect non ssl/tls connections.
+			return		301 https://$http_host$request_uri;
+		}
+		# Tell the browser that it can only download content from the domains you explicitly allow.
+		add_header		Content-Security-Policy "";
+		add_header		X-Content-Type-Options "";
+	}
+
+EOM
+}
+]
