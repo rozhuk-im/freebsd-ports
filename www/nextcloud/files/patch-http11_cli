@@ -1,0 +1,14 @@
+--- nextcloud/lib/private/Http/Client/Client.php
++++ nextcloud/lib/private/Http/Client/Client.php
+@@ -57,9 +57,9 @@
+ 			RequestOptions::VERIFY => $this->getCertBundle(),
+ 			RequestOptions::TIMEOUT => IClient::DEFAULT_REQUEST_TIMEOUT,
+ 			// Prefer HTTP/2 globally (PSR-7 request version)
+-			RequestOptions::VERSION => '2.0',
++			RequestOptions::VERSION => '1.1',
+ 		];
+-		$defaults['curl'][\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_2TLS;
++		$defaults['curl'][\CURLOPT_HTTP_VERSION] = \CURL_HTTP_VERSION_1_1;
+ 
+ 		$options['nextcloud']['allow_local_address'] = $this->isLocalAddressAllowed($options);
+ 		if ($options['nextcloud']['allow_local_address'] === false) {
