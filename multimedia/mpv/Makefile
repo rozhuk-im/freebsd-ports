@@ -5,6 +5,9 @@ PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio
 
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	4a08eb7a88f4d3aa6c4f27de79e35db603738057.patch:-p1 # https://github.com/mpv-player/mpv/pull/18221
+
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Free and open-source general-purpose video player
 WWW=		https://mpv.io
