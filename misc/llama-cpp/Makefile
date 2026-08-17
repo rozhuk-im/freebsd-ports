@@ -1,7 +1,6 @@
 PORTNAME=	llama-cpp
 DISTVERSIONPREFIX=	b
-DISTVERSION=	9426
-PORTREVISION=	1
+DISTVERSION=	10456
 CATEGORIES=	misc # machine-learning
 DIST_SUBDIR=	${PORTNAME}-${DISTVERSION}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
@@ -38,7 +37,8 @@ CMAKE_ON=	BUILD_SHARED_LIBS \
 		LLAMA_USE_SYSTEM_GGML
 CMAKE_OFF=	GGML_NATIVE \
 		FREEBSD_ALLOW_ADVANCED_CPU_FEATURES \
-		LLAMA_BUILD_TESTS
+		LLAMA_BUILD_TESTS \
+		LLAMA_BUILD_IS_DEV
 CMAKE_TESTING_ON=	LLAMA_BUILD_TESTS
 
 # user for llama-server, only used when EXAMPLES=ON
@@ -83,7 +83,12 @@ post-extract:
 
 post-patch: # set version in the code
 	@${REINPLACE_CMD} \
-		-e "s|set(BUILD_NUMBER 0)|set(BUILD_NUMBER ${DISTVERSION})|" \
+		-e "s|set(LLAMA_VERSION_MINOR 1)|set(LLAMA_VERSION_MINOR 0)|g" \
+		-e "s|set(LLAMA_VERSION_PATCH 0)|set(LLAMA_VERSION_PATCH ${DISTVERSION})|g" \
+		${WRKSRC}/CMakeLists.txt
+	@${REINPLACE_CMD} \
+		-e "s|set(BUILD_NUMBER 0)|set(BUILD_NUMBER ${DISTVERSION})|g" \
+		-e "s|find_package(Git)||g" \
 		${WRKSRC}/cmake/build-info.cmake
 
 do-test-ci: # build of tests fails, see https://github.com/ggml-org/llama.cpp/issues/10955

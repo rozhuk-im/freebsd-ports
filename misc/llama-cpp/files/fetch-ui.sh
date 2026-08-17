@@ -70,6 +70,14 @@ fi
 # Install npm dependencies using the port's committed package-lock.json
 cd "${SRC_DIR}/tools/ui"
 
+echo "PACKAGE-LOCK.JSON GENERATION"
+echo "============================"
+pwd
+npm install --package-lock-only
+mv -vi package-lock.json /wrkdirs
+# exit
+# replace /usr/ports/misc/llama-cpp/files/package-lock.json with /wrkdirs
+
 echo "INFO: using package-lock.json from ${PORT_PACKAGE_LOCK}"
 cp "${PORT_PACKAGE_LOCK}" package-lock.json
 
@@ -85,7 +93,12 @@ find node_modules -exec touch -h -d 1970-01-01T00:00:00Z {} +
 find node_modules -print0 | LC_ALL=C sort -z | \
 	tar czf "${OUTPUT}" --format=bsdtar --gid 0 --uid 0 --options gzip:!timestamp --no-recursion --null -T -
 
+echo "SHA256 OUTPUT"
+echo "============="
+ls -la "${OUTPUT}"
+sha256sum "${OUTPUT}"
+
 # Cleanup
-rm -rf "${BUILD_DIR}"
+# rm -rf "${BUILD_DIR}"
 
 echo "INFO: created ${OUTPUT}"
