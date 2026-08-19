@@ -1,9 +1,9 @@
 PORTNAME=	yt-dlp
-DISTVERSION=	2026.10.21
+DISTVERSION=	2026.09.28
 CATEGORIES=	www
-MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
-DISTNAME=	${PORTNAME}
-DIST_SUBDIR=	${PORTNAME}/${DISTVERSION}
+#MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
+#DISTNAME=	${PORTNAME}
+#DIST_SUBDIR=	${PORTNAME}/${DISTVERSION}
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Command-line program for downloading videos from various platforms
@@ -26,6 +26,8 @@ BUILD_DEPENDS=	zip:archivers/zip \
 RUN_DEPENDS=	${PY_DEPENDS}
 
 USES=		gmake python shebangfix
+USE_GITHUB=	yes
+GH_TAGNAME=	51bab8a0116f4d8004c315706d809782607d5847
 
 SHEBANG_GLOB=	devscripts/*.py
 
