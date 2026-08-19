@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 TIMESTAMP = 1787356154
 SHA256 (yt-dlp/2026.08.19/yt-dlp.tar.gz) = 072aad4f2a7604e92155f61a275a4752dc64046c8f6d90df3710525d94cd37c1
 SIZE (yt-dlp/2026.08.19/yt-dlp.tar.gz) = 6020567
+=======
+TIMESTAMP = 1788633502
+SHA256 (yt-dlp-yt-dlp-2026.08.30-bbc809a1161d3bfca51fa36f59dda35556ee85a0_GH0.tar.gz) = 7ce24ecd30a8a22505638f2766385faa1f5b926f5b50243a94b943ed3f27ed13
+SIZE (yt-dlp-yt-dlp-2026.08.30-bbc809a1161d3bfca51fa36f59dda35556ee85a0_GH0.tar.gz) = 3116192
+>>>>>>> 586ed096d1a5 (www/yt-dlp: update to current commit)
