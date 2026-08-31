@@ -14,5 +14,6 @@ LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LIB
 
 USES=		gmake libtool ssl
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--with-glib=no --with-swig=no --with-python=no
 
 .include <bsd.port.mk>
