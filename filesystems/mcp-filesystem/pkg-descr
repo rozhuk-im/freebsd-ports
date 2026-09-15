@@ -1,0 +1,3 @@
+Go implementation of MCP server filesystem — fast, secure, and fully
+compatible server for the Model Context Protocol (MCP), implementing all
+MCP file tools with support for STDIO, HTTP, and SSE transports.
