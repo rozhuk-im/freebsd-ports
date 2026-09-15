@@ -1,0 +1,11 @@
+GH_TUPLE=	\
+		bahlo:generic-list-go:v0.2.0:bahlo_generic_list_go/vendor/github.com/bahlo/generic-list-go \
+		buger:jsonparser:v1.1.1:buger_jsonparser/vendor/github.com/buger/jsonparser \
+		go-yaml:yaml:v3.0.1:go_yaml_yaml/vendor/gopkg.in/yaml.v3 \
+		google:uuid:v1.6.0:google_uuid/vendor/github.com/google/uuid \
+		invopop:jsonschema:v0.13.0:invopop_jsonschema/vendor/github.com/invopop/jsonschema \
+		mailru:easyjson:v0.7.7:mailru_easyjson/vendor/github.com/mailru/easyjson \
+		mark3labs:mcp-go:v0.37.0:mark3labs_mcp_go/vendor/github.com/mark3labs/mcp-go \
+		spf13:cast:v1.7.1:spf13_cast/vendor/github.com/spf13/cast \
+		wk8:go-ordered-map:v2.1.8:wk8_go_ordered_map_v2/vendor/github.com/wk8/go-ordered-map/v2 \
+		yosida95:uritemplate:v3.0.2:yosida95_uritemplate_v3/vendor/github.com/yosida95/uritemplate/v3
