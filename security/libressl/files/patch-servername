@@ -75,10 +75,11 @@
  {
  	struct tls *ctx = (struct tls *)arg;
  	struct tls_sni_ctx *sni_ctx;
-@@ -115,6 +117,14 @@
+@@ -114,6 +116,14 @@
+ 	free(conn_ctx->servername);
  	if ((conn_ctx->servername = strdup(name)) == NULL)
  		goto err;
- 
++
 +	if (conn_ctx->servername_cb != NULL) {
 +		if (0 != conn_ctx->servername_cb(conn_ctx,
 +		    conn_ctx->servername, conn_ctx->servername_cb_arg))
@@ -86,17 +87,16 @@
 +		if (tls_configure_server_sni(ctx) == -1)
 +			goto err;
 +	}
-+
+ 
  	/* Find appropriate SSL context for requested servername. */
  	for (sni_ctx = ctx->sni_ctx; sni_ctx != NULL; sni_ctx = sni_ctx->next) {
- 		if (tls_check_name(ctx, sni_ctx->ssl_cert, name,
 @@ -241,7 +251,7 @@
  	SSL_CTX_set_options(*ssl_ctx, SSL_OP_NO_CLIENT_RENEGOTIATION);
  
  	if (SSL_CTX_set_tlsext_servername_callback(*ssl_ctx,
 -	    tls_servername_cb) != 1) {
 +	    tls_server_servername_cb) != 1) {
- 		tls_set_error(ctx, TLS_ERROR_UNKNOWN,
+ 		tls_set_errorx(ctx, TLS_ERROR_UNKNOWN,
  		    "failed to set servername callback");
  		goto err;
 @@ -357,8 +367,10 @@
