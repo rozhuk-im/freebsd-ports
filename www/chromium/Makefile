@@ -283,6 +283,9 @@ LDFLAGS_i386=	-Wl,-znotext
 MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 		CPLUS_INCLUDE_PATH=${LOCALBASE}/include
 
+# ccache hit ratio improve.
+MAKE_ENV+=	CCACHE_IGNOREOPTIONS="-fprofile-use=* -DCR_LIBCXX_REVISION=*"
+
 # rust
 MAKE_ENV+=	RUSTC_BOOTSTRAP=1
 GN_ARGS+=	enable_rust=true \
@@ -304,6 +307,14 @@ post-patch:
 		${WRKSRC}/third_party/typescript/linux-amd64/3pp/patches/typescript_native_preview.patch
 
 pre-configure:
+.if defined(WITH_CCACHE_BUILD) && !defined(NO_CCACHE)
+	@${MKDIR} ${WRKDIR}/.bin
+	@${RM} -f ${WRKDIR}/.bin/cpp ${WRKDIR}/.bin/cc ${WRKDIR}/.bin/c++
+	@${PRINTF} '#!/bin/sh\n\nexec ${CCACHE_BIN} ${LOCALBASE}/bin/clang-cpp${LLVM_DEFAULT} "$$@"\n' > ${WRKDIR}/.bin/cpp
+	@${PRINTF} '#!/bin/sh\n\nexec ${CCACHE_BIN} ${LOCALBASE}/bin/clang${LLVM_DEFAULT} "$$@"\n' > ${WRKDIR}/.bin/cc
+	@${PRINTF} '#!/bin/sh\n\nexec ${CCACHE_BIN} ${LOCALBASE}/bin/clang++${LLVM_DEFAULT} "$$@"\n' > ${WRKDIR}/.bin/c++
+	@${CHMOD} +x ${WRKDIR}/.bin/cpp ${WRKDIR}/.bin/cc ${WRKDIR}/.bin/c++
+.endif
 	# We used to remove bundled libraries to be sure that chromium uses
 	# system libraries and not shipped ones.
 	# cd ${WRKSRC} && ${PYTHON_CMD} \
@@ -332,7 +343,7 @@ pre-configure:
 
 pre-build:
 	cd ${WRKSRC}/typescript/tsc && \
-		${SETENV} ${MAKE_ENV} go build -v -p ${MAKE_JOBS_NUMBER} -mod=vendor ./cmd/tsgo && \
+		${SETENV} ${MAKE_ENV} GOMAXPROCS=${MAKE_JOBS_NUMBER} GOPROXY=off go build -v -mod=vendor ./cmd/tsgo && \
 		ln -sf ${WRKSRC}/typescript/tsc/tsgo \
 		${WRKSRC}/third_party/typescript/linux-amd64/src/lib/tsc
 
@@ -347,10 +358,10 @@ do-configure:
 
 	# GN generator bootstrapping and generating ninja files
 	${LN} -sf ${WRKSRC}/out/${BUILDTYPE}/gn ${WRKSRC}/buildtools/linux64/gn
-	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} CC=${CC} CXX=${CXX} LD=${CXX} \
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} CC=cc CXX=c++ LD=${CXX} \
 		READELF=${READELF} AR=${AR} NM=${NM} ${PYTHON_CMD} \
 		./tools/gn/bootstrap/bootstrap.py ${GN_BOOTSTRAP_FLAGS}
-	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ./out/${BUILDTYPE}/gn \
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ./out/${BUILDTYPE}/gn \
 		gen --args='${GN_ARGS}' out/${BUILDTYPE}
 
 	# Setup nodejs dependency
