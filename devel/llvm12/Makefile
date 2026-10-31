@@ -275,7 +275,7 @@ post-install-DOCS-off:
 post-install-CLANG-on:
 	${LN} -f ${STAGEDIR}${LLVM_PREFIX}/bin/clang \
 	   ${STAGEDIR}${LLVM_PREFIX}/bin/clang-cpp
-	${INSTALL_PROGRAM} ${WRKDIR}/.build/bin/clang-tblgen \
+	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/bin/clang-tblgen \
 	    ${STAGEDIR}${LLVM_PREFIX}/bin/
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/toolchains/
 	${INSTALL_DATA} ${WRKDIR}/xtoolchain.mk \
