@@ -472,7 +472,7 @@ post-install-LIT-on:
 	${MKDIR} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/${LIT_MOD_NAME}/llvm
 	${INSTALL_DATA} ${WRKSRC}/llvm/utils/lit/lit/llvm/*.py \
 	    ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/${LIT_MOD_NAME}/llvm/
-	${INSTALL_PROGRAM} ${WRKDIR}/.build/bin/FileCheck \
+	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/bin/FileCheck \
 	    ${STAGEDIR}${LLVM_PREFIX}/bin/
 	${LN} -fs ../${LLVM_DIR}/bin/FileCheck \
 	    ${STAGEDIR}${PREFIX}/bin/FileCheck${LLVM_SUFFIX}
