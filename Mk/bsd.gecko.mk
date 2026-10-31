@@ -100,9 +100,14 @@ MOZ_EXPORT+=	LLVM_OBJDUMP="${LOCALBASE}/bin/llvm-objdump${LLVM_VERSION}"
 # Require newer Clang than what's in base system unless user opted out
 .    if ${CC} == cc && ${CXX} == c++ && exists(/usr/lib/libc++.so)
 CPP=			${LOCALBASE}/bin/clang-cpp${LLVM_VERSION}
-CC=				${LOCALBASE}/bin/clang${LLVM_VERSION}
+CC=			${LOCALBASE}/bin/clang${LLVM_VERSION}
 CXX=			${LOCALBASE}/bin/clang++${LLVM_VERSION}
 USES:=			${USES:Ncompiler\:*} # XXX avoid warnings
+.    endif
+.    if defined(WITH_CCACHE_BUILD) && !defined(NO_CCACHE)
+CPP:=			${CCACHE_BIN} ${CPP}
+CC:=			${CCACHE_BIN} ${CC}
+CXX:=			${CCACHE_BIN} ${CXX}
 .    endif
 
 MOZSRC?=	${WRKSRC}
