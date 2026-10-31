@@ -566,7 +566,7 @@ post-install-DOCS-off:
 post-install-CLANG-on:
 	${LN} -f ${STAGEDIR}${LLVM_PREFIX}/bin/clang \
 	    ${STAGEDIR}${LLVM_PREFIX}/bin/clang-cpp
-	${INSTALL_PROGRAM} ${WRKDIR}/.build/bin/clang-tblgen \
+	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/bin/clang-tblgen \
 	    ${STAGEDIR}${LLVM_PREFIX}/bin/
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/toolchains/
 	${INSTALL_DATA} ${WRKDIR}/xtoolchain.mk \
@@ -611,7 +611,7 @@ post-install-LIT-on:
 	    ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/lit${LLVM_SUFFIX}/builtin_commands/
 	${INSTALL_DATA} ${WRKSRC}/llvm/utils/lit/lit/formats/*.py \
 	    ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/lit${LLVM_SUFFIX}/formats/
-	${INSTALL_PROGRAM} ${WRKDIR}/.build/bin/FileCheck \
+	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/bin/FileCheck \
 	    ${STAGEDIR}${LLVM_PREFIX}/bin/
 	${LN} -fs ../${LLVM_DIR}/bin/FileCheck \
 	    ${STAGEDIR}${PREFIX}/bin/FileCheck${LLVM_SUFFIX}
