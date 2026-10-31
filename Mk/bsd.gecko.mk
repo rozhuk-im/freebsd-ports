@@ -100,7 +100,7 @@ MOZ_EXPORT+=	LLVM_OBJDUMP="${LOCALBASE}/bin/llvm-objdump${LLVM_VERSION}"
 # Require newer Clang than what's in base system unless user opted out
 .    if ${CC} == cc && ${CXX} == c++ && exists(/usr/lib/libc++.so)
 CPP=			${LOCALBASE}/bin/clang-cpp${LLVM_VERSION}
-CC=				${LOCALBASE}/bin/clang${LLVM_VERSION}
+CC=			${LOCALBASE}/bin/clang${LLVM_VERSION}
 CXX=			${LOCALBASE}/bin/clang++${LLVM_VERSION}
 USES:=			${USES:Ncompiler\:*} # XXX avoid warnings
 .    endif
@@ -192,6 +192,7 @@ BUILD_DEPENDS+=	${-${dep}_BUILD_DEPENDS}
 MOZ_OPTIONS+=	\
 		--enable-update-channel=${PKGNAMESUFFIX:Urelease:S/^-//} \
 		--disable-updater \
+		${CCACHE_ENABLED:S/no//:S/yes/--with-ccache=${CCACHE_BIN}/} \
 		--with-system-zlib
 
 # API keys from www/chromium 
@@ -322,9 +323,9 @@ post-patch: gecko-post-patch
 gecko-post-patch:
 	@${RM} ${MOZCONFIG}
 .    if !defined(NOMOZCONFIG)
-.      for arg in ${MOZ_OPTIONS}
-	@${ECHO_CMD} ac_add_options ${arg:Q} >> ${MOZCONFIG}
-.      endfor
+	for arg in ${MOZ_OPTIONS}; do \
+		${ECHO_CMD} ac_add_options $${arg} >> ${MOZCONFIG}; \
+	done
 .      for arg in ${MOZ_MK_OPTIONS}
 	@${ECHO_CMD} mk_add_options ${arg:Q} >> ${MOZCONFIG}
 .      endfor
