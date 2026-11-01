@@ -32,9 +32,8 @@ CMAKE_ARGS=	-DLIBRETROCOMMON_URL="${DISTDIR}/${DISTFILE_libretro}" \
 		-DRCHEEVOS_URL="${DISTDIR}/${DISTFILE_rcheevos}"
 
 post-extract:
-	@${MKDIR} ${WRKDIR}/.build
-	@${MKDIR} ${STAGEDIR}${WRKDIR}
-	@${LN} -sf ${WRKDIR}/.build ${STAGEDIR}${WRKDIR}/
+	@${MKDIR} ${BUILD_WRKSRC} ${STAGEDIR}${WRKSRC}
+	@${LN} -sf ${BUILD_WRKSRC} ${STAGEDIR}${BUILD_WRKSRC}
 
 post-build:
 	@${RM} -rf ${STAGEDIR}${WRKDIRPREFIX}
