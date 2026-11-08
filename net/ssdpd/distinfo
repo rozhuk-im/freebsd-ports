@@ -1,5 +1,7 @@
-TIMESTAMP = 1608587793
-SHA256 (rozhuk-im-ssdpd-1.8.0-a086b27ec1ce0b0eda87bff2b841a44837fa91aa_GH0.tar.gz) = 37cd1dc5b24ccbeef8c426e8a9d311dce1c48ecdd63000c82d5e9ed0035cd8f5
-SIZE (rozhuk-im-ssdpd-1.8.0-a086b27ec1ce0b0eda87bff2b841a44837fa91aa_GH0.tar.gz) = 30845
-SHA256 (rozhuk-im-liblcb-154cf601a061c06ccc3ec3642c578e5c5ac40c90_GH0.tar.gz) = cd8f4aee5b217d6a1a22b107f5c9aa9f348be011bbb0808138b215dbdc6407fd
-SIZE (rozhuk-im-liblcb-154cf601a061c06ccc3ec3642c578e5c5ac40c90_GH0.tar.gz) = 407839
+TIMESTAMP = 1794215195
+SHA256 (rozhuk-im-ssdpd-1.9.1-c694689237b2eaa2f2c31f00da5ed6e8015e4234_GH0.tar.gz) = 0f967d9bb3e629eaf2c7dcb555601be68b3d4a111d61f045b509c50b0f9a265f
+SIZE (rozhuk-im-ssdpd-1.9.1-c694689237b2eaa2f2c31f00da5ed6e8015e4234_GH0.tar.gz) = 33370
+SHA256 (rozhuk-im-liblcb-416814f4ea9bfbd74c7da49364b53262bb7baf2b_GH0.tar.gz) = 3d1dfe0919de3081dc580acad2a396692863a035c271b8bee61fd48d3df56e21
+SIZE (rozhuk-im-liblcb-416814f4ea9bfbd74c7da49364b53262bb7baf2b_GH0.tar.gz) = 403645
+SHA256 (rozhuk-im-ssbs-2579b9e8fcb5aaa2a6cdd3101d0ee7f990d44b5e_GH0.tar.gz) = 77799f4074cb380cbc63902c3cd87caba5f218374fc567c6e8b5eeef7ff16e47
+SIZE (rozhuk-im-ssbs-2579b9e8fcb5aaa2a6cdd3101d0ee7f990d44b5e_GH0.tar.gz) = 6850

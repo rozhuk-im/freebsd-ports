@@ -1,5 +1,5 @@
 PORTNAME=	ssdpd
-PORTVERSION=	1.8.0
+PORTVERSION=	1.9.1
 CATEGORIES=	net
 
 MAINTAINER=	rozhuk.im@gmail.com
@@ -10,14 +10,18 @@ LICENSE=	BSD3CLAUSE
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	rozhuk-im:DEFAULT \
-		rozhuk-im:lib_lcb
+		rozhuk-im:liblcb \
+		rozhuk-im:ssbs
 GH_PROJECT=	ssdpd:DEFAULT \
-		liblcb:lib_lcb
-GH_TAGNAME=	a086b27ec1ce0b0eda87bff2b841a44837fa91aa:DEFAULT \
-		154cf601a061c06ccc3ec3642c578e5c5ac40c90:lib_lcb
-GH_SUBDIR=	src/liblcb:lib_lcb
+		liblcb:liblcb \
+		ssbs:ssbs
+GH_TAGNAME=	c694689237b2eaa2f2c31f00da5ed6e8015e4234:DEFAULT \
+		416814f4ea9bfbd74c7da49364b53262bb7baf2b:liblcb \
+		2579b9e8fcb5aaa2a6cdd3101d0ee7f990d44b5e:ssbs
+GH_SUBDIR=	3rdparty/liblcb:liblcb \
+		3rdparty/ssbs:ssbs
 
-USES=		cmake
+USE_RC_SUBR=	ssdpd
 PKGMESSAGE=	${WRKSRC}/pkg-message
 SUB_FILES=	pkg-message
 
@@ -26,7 +30,6 @@ OPTIONS_DEFAULT=INSTALL_MEDIA_SRV
 OPTIONS_SUB=	yes
 
 INSTALL_MEDIA_SRV_DESC=		Install PHP UPnP/DLNA Media server
-INSTALL_MEDIA_SRV_CMAKE_BOOL=	INSTALL_PHP_MEDIA_SERVER
 INSTALL_MEDIA_SRV_RUN_DEPENDS=	nginx:www/nginx
 
 .include <bsd.port.options.mk>
@@ -38,8 +41,20 @@ SHAREOWN=	${WWWOWN}
 SHAREGRP=	${WWWGRP}
 .endif
 
+do-build:
+	@${WRKSRC}/make.sh
+
+do-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/ssdpd
+	@${INSTALL_PROGRAM} ${WRKSRC}/build-release/ssdpd ${STAGEDIR}${PREFIX}/bin
+	@${INSTALL_DATA} ${WRKSRC}/ssdpd.conf ${STAGEDIR}${PREFIX}/etc/ssdpd/ssdpd.conf.sample
+
 post-install-INSTALL_MEDIA_SRV-on:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/php-fpm.d \
+		${STAGEDIR}/${DATADIR}/www/upnpdata
+	@${INSTALL_DATA} ${WRKSRC}/php/upnp-server.conf ${STAGEDIR}${ETCDIR}/../php-fpm.d/upnp-server.conf.sample
+	@(cd ${WRKSRC}/nginx && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/etc/ssdpd/)
+	@(cd ${WRKSRC}/www && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/www)
 	@${FIND} ${STAGEDIR}${ETCDIR}/ -type f -name '*.conf' -exec ${MV} {} {}.sample \;
-	@${MV} ${STAGEDIR}${ETCDIR}/../php-fpm.d/upnp-server.conf ${STAGEDIR}${ETCDIR}/../php-fpm.d/upnp-server.conf.sample
 
 .include <bsd.port.mk>
