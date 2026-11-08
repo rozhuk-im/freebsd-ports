@@ -1,0 +1,35 @@
+#!/bin/sh
+### Rozhuk Ivan 2025-2026
+### startup script file for virtual_oss_sequencer
+###
+
+
+# PROVIDE: virtual_oss_sequencer
+# REQUIRE: DAEMON
+# BEFORE:  LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="virtual_oss_sequencer"
+rcvar=virtual_oss_sequencer_enable
+
+load_rc_config $name
+
+: ${virtual_oss_sequencer_enable="NO"}
+: ${virtual_oss_sequencer_command="%%PREFIX%%/bin/virtual_oss_sequencer"}
+: ${virtual_oss_sequencer_pidfile="/var/run/virtual_oss_sequencer.pid"}
+: ${virtual_oss_sequencer_user="nobody"}
+: ${virtual_oss_sequencer_group="`/usr/bin/id -gn ${virtual_oss_sequencer_user}`"}
+
+
+command=${virtual_oss_sequencer_command}
+command_args="-d -p ${virtual_oss_sequencer_pidfile} -u ${virtual_oss_sequencer_user} -g ${virtual_oss_sequencer_group}"
+
+# Do not pass "user" and "group" to rc.subr.
+virtual_oss_sequencer_user=''
+virtual_oss_sequencer_group=''
+
+pidfile="${virtual_oss_sequencer_pidfile}"
+
+run_rc_command "$1"

@@ -1,0 +1,35 @@
+#!/bin/sh
+### Rozhuk Ivan 2025-2026
+### startup script file for virtual_midi
+###
+
+
+# PROVIDE: virtual_midi
+# REQUIRE: DAEMON
+# BEFORE:  LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="virtual_midi"
+rcvar=virtual_midi_enable
+
+load_rc_config $name
+
+: ${virtual_midi_enable="NO"}
+: ${virtual_midi_command="%%PREFIX%%/bin/virtual_midi"}
+: ${virtual_midi_pidfile="/var/run/virtual_midi.pid"}
+: ${virtual_midi_user="nobody"}
+: ${virtual_midi_group="`/usr/bin/id -gn ${virtual_midi_user}`"}
+
+
+command=${virtual_midi_command}
+command_args="-d -p ${virtual_midi_pidfile} -u ${virtual_midi_user} -g ${virtual_midi_group}"
+
+# Do not pass "user" and "group" to rc.subr.
+virtual_midi_user=''
+virtual_midi_group=''
+
+pidfile="${virtual_midi_pidfile}"
+
+run_rc_command "$1"
