@@ -1,3 +1,5 @@
-TIMESTAMP = 1746649926
-SHA256 (rozhuk-im-virtual_midi-1.0.0-9e0dedeb3cef118fe10b0581c2ec23d2079cc857_GH0.tar.gz) = 4f783edd78e9a0cf0ef389bb89a3ffd8ca694bafc06e20ce663bc8b97d747a0c
-SIZE (rozhuk-im-virtual_midi-1.0.0-9e0dedeb3cef118fe10b0581c2ec23d2079cc857_GH0.tar.gz) = 27340
+TIMESTAMP = 1794169268
+SHA256 (rozhuk-im-virtual_midi-1.0.1-5b0cb3bac78f58790f80fb6a599ff2fa1247ea14_GH0.tar.gz) = 5a005a4e10b1e8be2cd0d05c65ea02a411ca0d4955377e66b6cb4d7ab72408b5
+SIZE (rozhuk-im-virtual_midi-1.0.1-5b0cb3bac78f58790f80fb6a599ff2fa1247ea14_GH0.tar.gz) = 24645
+SHA256 (rozhuk-im-ssbs-2579b9e8fcb5aaa2a6cdd3101d0ee7f990d44b5e_GH0.tar.gz) = 77799f4074cb380cbc63902c3cd87caba5f218374fc567c6e8b5eeef7ff16e47
+SIZE (rozhuk-im-ssbs-2579b9e8fcb5aaa2a6cdd3101d0ee7f990d44b5e_GH0.tar.gz) = 6850
