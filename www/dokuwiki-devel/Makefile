@@ -1,5 +1,5 @@
 PORTNAME=	dokuwiki
-PORTVERSION=	20250315
+PORTVERSION=	20261110
 CATEGORIES=	www
 PKGNAMESUFFIX=	-devel
 
@@ -12,7 +12,7 @@ WWW=		https://www.dokuwiki.org/
 
 LICENSE=		BSD3CLAUSE GPLv2 GPLv2+ GPLv3 MIT
 LICENSE_COMB=		multi
-LICENSE_FILE_BSD3CLAUSE=${WRKSRC}/vendor/simplepie/simplepie/LICENSE.txt
+LICENSE_FILE_BSD3CLAUSE=${WRKSRC}/vendor/simplepie/simplepie/LICENSES/BSD-3-Clause.txt
 LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
 LICENSE_FILE_GPLv2+ =	${WRKSRC}/vendor/geshi/geshi/LICENSE
 LICENSE_FILE_MIT=	${WRKSRC}/vendor/composer/LICENSE
@@ -21,7 +21,7 @@ CONFLICTS_INSTALL=	dokuwiki
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	splitbrain
-GH_TAGNAME=	19f3aa325f8a38671a14de96bf31e1c4601e987b
+GH_TAGNAME=	b17325710c666925e619382c4c43e41d9807cf06
 USES=		cpe php:web,flavors shebangfix tar:tgz
 USE_PHP=	ctype filter gd hash json iconv mbstring openssl pcre \
 		session simplexml xml xmlrpc zlib
@@ -59,20 +59,20 @@ AUTHPDO_DESC=		Authenticate against a database via PDO
 POPULARITY_DESC=	Send anonymous data about your wiki to the DokuWiki developers
 
 BBCODE_DESC=		Makes the use of BBcode syntax possible
-BBCODE_GH_TUPLE=	dokufreaks:plugin-bbcode:5b1b2404797cf7ed8678d83d283e24dfc336225f:plugin_bbcode
+BBCODE_GH_TUPLE=	dokufreaks:plugin-bbcode:f5a86833b470470edf36b0af12c7450b322418c0:plugin_bbcode
 
 BLOG_DESC=		Use DokuWiki as blogging tool
 BLOG_GH_TUPLE=		dokufreaks:plugin-blog:c4b00e79a13fc5a88a3b9bb4d4669bb18427c802:plugin_blog
 BLOG_IMPLIES=		INCLUDE PAGELIST
 
 CATLIST_DESC=		Adds a form to create a new page in the current namespace
-CATLIST_GH_TUPLE=	xif-fr:dokuwiki-plugin-catlist:87f70938aa78a268a1e63d49eda47bd19ad2857f:plugin_catlist
+CATLIST_GH_TUPLE=	xif-fr:dokuwiki-plugin-catlist:edf7bc2be51a5b85b2ef5ed7cbd766736251cc8e:plugin_catlist
 
 CLEANUP_DESC=		Perform file cleanup in the wiki
-CLEANUP_GH_TUPLE=	cosmocode:dokuwiki-plugin-cleanup:6c702ffe9a21b8b5afd3620483bf5b76b9aa2106:plugin_cleanup
+CLEANUP_GH_TUPLE=	cosmocode:dokuwiki-plugin-cleanup:86b105108a11b855b3fbfdddbd03f4d74290e48e:plugin_cleanup
 
 CLOUD_DESC=		Shows a word cloud from different sources
-CLOUD_GH_TUPLE=		dokufreaks:plugin-cloud:ba3a604d518fafcd342eb41d5330a3b74118e238:plugin_cloud
+CLOUD_GH_TUPLE=		dokufreaks:plugin-cloud:6829ca053b247c9ec3fe45ee3b99bcbbaa2f8d3f:plugin_cloud
 
 CHEM_DESC=		Format a molecular formula
 CHEM_GH_TUPLE=		iobataya:dokuwiki-plugin-chem:b2cf09601134160385822a989fb450f41a3996e0:plugin_chem
@@ -82,20 +82,20 @@ CUSTOMBUTTONS_GH_TUPLE=	ConX:dokuwiki-plugin-custombuttons:fe62df3de7f643225d676
 CUSTOMBUTTONS_CONFIGS=	config.json
 
 EDITTABLE_DESC=		Provides a visual table editing and inserting interface
-EDITTABLE_GH_TUPLE=	cosmocode:edittable:9e126cacf8d53cd2ef85471599d9a6ff72e7f627:plugin_edittable
+EDITTABLE_GH_TUPLE=	cosmocode:edittable:a380ed2019114773538ab7e47b5e3d5be74b3745:plugin_edittable
 
 HTMLDETAILSTAG_DESC=	Use the HTML <details> and <summary> tag for toggling information
 HTMLDETAILSTAG_GH_TUPLE= revolution-arts:dokuwiki-plugin-htmldetailstag:6be4a2af74e95bdde95eb3a07b0a51492f7b5165:plugin_htmldetailstag
 
 INCLUDE_DESC=		Include another wiki page into the current one
-INCLUDE_GH_TUPLE=	dokufreaks:plugin-include:c66bac01f1466a2ecc077b77ba2dd7bc0f343ab2:plugin_include
+INCLUDE_GH_TUPLE=	dokufreaks:plugin-include:6e31ef49dbf8ba836ad951ca916b2d316029e504:plugin_include
 INCLUDE_IMPLIES=	TAG
 
 MINDTHEDARK_DESC=	light and a dark color scheme
-MINDTHEDARK_GH_TUPLE=	MrReSc:MindTheDark:c5e286f2d4a327f1bd29d3ed1fe69ec327a72140:theme_mindthedark
+MINDTHEDARK_GH_TUPLE=	MrReSc:MindTheDark:f95843c041a33fdbb525ce49cb4f6429ac6fc35d:theme_mindthedark
 
-MOVE_DESC=		Extended edit functions such as renaming or deleting a page
-MOVE_GH_TUPLE=		michitux:dokuwiki-plugin-move:8c32b236fb7fa9f9762b6ff293a721aaaa4be46c:plugin_move
+MOVE_DESC=		Move and rename pages and namespaces whilst maintaining the links
+MOVE_GH_TUPLE=		michitux:dokuwiki-plugin-move:5316a909509f2fe5e8b1df181bcf88781a787dfe:plugin_move
 
 NOTE_DESC=		Allows to create nice notes
 NOTE_GH_TUPLE=		lpaulsen93:dokuwiki_note:86cd79fb7c4be03be652e4e9f58f87b4ab965fec:plugin_note
@@ -104,25 +104,25 @@ PAGEBUTTONS_DESC=	Provides buttons to create/delete the current page
 PAGEBUTTONS_GH_TUPLE=	SoarinFerret:dokuwiki-plugin-pagebuttons:b8e3cec0da303167d48394b5238b8011207f69c1:plugin_pagebuttons
 
 PAGELIST_DESC=		Lists pages in a nice looking table or unordered list
-PAGELIST_GH_TUPLE=	dokufreaks:plugin-pagelist:a5816f0dee7fde0060970e75e88d3fa5d521649f:plugin_pagelist
+PAGELIST_GH_TUPLE=	dokufreaks:plugin-pagelist:53f63e4842a91d5f1bc5eb1259d0cffc33fe110a:plugin_pagelist
 
 SEARCHINDEX_DESC=	Rebuild the search index
-SEARCHINDEX_GH_TUPLE=	splitbrain:dokuwiki-plugin-searchindex:14433cd9fa637e8032d216c429654c4ea803cb8e:plugin_searchindex
+SEARCHINDEX_GH_TUPLE=	splitbrain:dokuwiki-plugin-searchindex:4b51babf3034b6ba25a2b1c353a80acf3e7ee1aa:plugin_searchindex
 
 SECTIONTOGGLE_DESC=	Toggle sections open and closed by clicking on section headers
 SECTIONTOGGLE_GH_TUPLE=	turnermm:sectiontoggle:1bd9ae74aed5c806d6b5eb8c08a0ea6711e9a428:plugin_sectiontoggle
 
 TAG_DESC=		Assign category tags to wiki pages
-TAG_GH_TUPLE=		dokufreaks:plugin-tag:50251e3cb1bc7e27cf1724e7a424b8bab2287cb1:plugin_tag
+TAG_GH_TUPLE=		dokufreaks:plugin-tag:6c862059cc41df6938a24ad9a49fc4812b467b21:plugin_tag
 TAG_IMPLIES=		PAGELIST
 
 THEMES_DESC=		Additional themes for DoKuWiKi
 
 TRANSLATION_DESC=	Help with translation efforts in a multilingual wiki
-TRANSLATION_GH_TUPLE=	splitbrain:dokuwiki-plugin-translation:b6f39545557016c30ff2147fec6aa1f528a79230:plugin_translation
+TRANSLATION_GH_TUPLE=	splitbrain:dokuwiki-plugin-translation:1b65306a38f1b5fd939f347eea03e7d07738c17b:plugin_translation
 
 UPGRADE_DESC=		Update with a few clicks from the admin interface
-UPGRADE_GH_TUPLE=	splitbrain:dokuwiki-plugin-upgrade:1fb17b9f85113dacd48e8a0a50212e3c3a131064:plugin_upgrade
+UPGRADE_GH_TUPLE=	splitbrain:dokuwiki-plugin-upgrade:a963e7a2ec1dd272b2b62b5d745f09175b530983:plugin_upgrade
 
 .include <bsd.port.pre.mk>
 
