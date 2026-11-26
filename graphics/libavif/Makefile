@@ -34,7 +34,7 @@ USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	AOMediaCodec
-GH_TUPLE=	kmurray:libargparse:ee74d1b:kmurray_libargparse/../.build/_deps/libargparse-src
+GH_TUPLE=	kmurray:libargparse:ee74d1b:kmurray_libargparse
 
 CPE_VENDOR=	aomedia
 
@@ -78,6 +78,10 @@ LIBXML2_CMAKE_OFF=	-DAVIF_LIBXML2=OFF
 LIBXML2_CMAKE_ON=	-DAVIF_LIBXML2=SYSTEM
 LIBXML2_USE=		GNOME=libxml2
 LIBXML2_USES=		gnome
+
+post-extract:
+	@${MKDIR} ${BUILD_WRKSRC}/_deps
+	@${MV} ${WRKSRC_kmurray_libargparse} ${BUILD_WRKSRC}/_deps/libargparse-src
 
 post-patch:
 # Clean up bundled libraries
