@@ -76,13 +76,5 @@ UPLOAD_DESC=		HTTP file upload plugin
 UPLOAD_MESON_ON=	-DSOUP_VERSION:INT=2
 UPLOAD_MESON_ENABLED=	plugin-http-files
 
-pre-configure:
-	@if [ -z "${PACKAGE_BUILDING}" ]; then if ! ${PKG_BIN} query \
-			'%o-%Ok-%Od' databases/sqlite3 | \
-			${GREP} -F -wq databases/sqlite3-UNICODE61-on; then \
-		${ECHO_MSG} "/!\ Please make sure databases/sqlite3 is built\
-			       with UNICODE61 option"; \
-	exit 1; \
-	fi; fi
 
 .include <bsd.port.mk>
